@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/homeFragment"
+            android:icon="@drawable/ic_home_white_24dp"
+            android:title="@string/home" />
+
+    <item
+            android:id="@+id/orderFragment"
+            android:icon="@drawable/ic_assignment_white_24dp"
+            android:title="Order" />
+
+    <item
+            android:id="@+id/messageFragment"
+            android:icon="@drawable/ic_mail_outline_white_24dp"
+            android:title="Message" />
+
+    <item
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_person_white_24dp"
+            android:title="@string/profile" />
+
+</menu>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="privacy_policy_title">
+        Kebijakan Privasi
+        \nKami memiliki komitmen untuk menjaga privasi dari data pribadi anda pada lingkungan layanan kami.
+
+    </string>
+    <string name="privacy_policy_body">
+        Kepada pengguna Kamira,
+        \nTerima kasih telah menggunakan produk dan layanan kami ini. Perlindungan data merupakan masalah kepercayaan antara kami dengan anda sebagai pengguna. Untuk itu kami ingin memberikan informasi tentang penggunaan dan perlindungan data yang anda bagikan.
+        \nMenggunakan aplikasi Kamira melalui Android smartphone, berarti anda setuju dengan ketentuan dan kebijakan yang telah kami buat dan jelaskan pada paragraf berikutnya.
+
+        \n\nPengumpulan Informasi Pribadi
+        \nRegistrasi
+        \nAplikasi Kamira akan meminta nomor telepon anda sebagai kunci akses di aplikasi. Kamira akan memberikan kode otentikasi untuk verifikasi bahwa anda pengguna nomor telepon tersebut. Nomor telepon anda terlindungi dan tidak akan dibagikan ke pihak ketiga atau pihak lainnya.
+
+        \n\nInformasi profil
+        \nKamira meminta anda untuk mengisi data pribadi seperti
+        \n1. Nama lengkap,
+        \n2. Jenis Kelamin
+        \n3. Alamat
+        \n4. Kota
+        \n5. Kode pos
+        \nInformasi tersebut digunakan sebagai verifikasi identitas anda. Perlindungan pada informasi tersebut diperhatikan dan tidak akan dibagikan ke pihak lainnya.
+
+        \n\nLokasi
+        \nKamira membutuhkan akses GPS anda untuk menangkap lokasi sebagai dukungan layanan kami. Anda akan dimintai ijin terlebih dahulu dari aplikasi kami sebelum memulai menangkap koordinat lokasi tertentu. Lokasi anda bersifat rahasia dan hanya staf dari Kamira yang dapat mengakses untuk kebutuhan layanan yang kami berikan
+
+        \n\nPenggunaan informasi pribadi anda
+        \n1. Informasi dikumpul untuk kebutuhan penelitian dan pengembangan produk kedepan
+        \n2. Untuk dapat berkomunikasi dengan anda secara baik dengan melalui aplikasi atau nomor telepon
+        \n3. Ketika membentuk komunikasi dengan anda, hanyalah sebatas pengembangan produk dan kami akan meminta persetujuan sebelumnya jika anda bersedia dihubungi
+        \n4. Pengungkapan informasi anda akan diberikan jika ada kebutuhan dari pihak berwajib
+        \n5. Informasi lokasi anda hanya digunakan untuk keperluan atau dukungan dari layanan kami
+
+        \n\nDaftar layanan
+        \nSeluruh daftar layanan kami simpan pada halaman ketentuan penggunaan.
+
+        \n\nPerubahan pada kebijakan privasi
+        \nKamira memiliki hak untuk mengubah kebijakan privasi kapanpun dengan ketentuan setiap perubahan akan di informasikan kepada pengguna baik melalui email, landing page, atau aplikasi Android Kamira.
+
+        \n\nPengaduan pelanggaran
+        \nAnda dapat memberikan pengaduan melalui email info@kamira.energy atau admin@kamira.energy.
+
+        \n\nHukum
+        \nKamira tunduk pada hukum yang berlaku di Negara Kesatuan Republik Indonesia. Hukum tersebut yakni Undang undang Informasi Transaksi Elektronik dan Undang undang KUHP.
+
+    </string>
+</resources>

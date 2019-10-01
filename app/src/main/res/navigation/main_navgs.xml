@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/main_navgs"
+            app:startDestination="@id/homeFragment">
+
+    <fragment android:id="@+id/homeFragment" android:name="info.twentysixproject.kamiraenergy.HomeFragment"
+              android:label="fragment_home" tools:layout="@layout/fragment_home">
+        <action android:id="@+id/hometopickup_action"
+                app:destination="@id/pickupGarbageFragment"/>
+        <action
+                android:id="@+id/hometopointsfr_action"
+                app:destination="@id/pointsFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/pointsFragment"
+            android:name="info.twentysixproject.kamiraenergy.PointsFragment"
+            android:label="hometopointsfragment_action"
+            tools:layout="@layout/fragment_points" >
+        <action
+                android:id="@+id/pointstoqrscannerfr_action"
+                app:destination="@id/qrScannerFragment" />
+        <action
+                android:id="@+id/action_pointsFragment_to_pointsHistoryFragment"
+                app:destination="@id/pointsHistoryFragment" />
+    </fragment>
+    <fragment android:id="@+id/pickupGarbageFragment"
+              android:name="info.twentysixproject.kamiraenergy.PickupGarbageFragment"
+              android:label="fragment_pickup_garbage" tools:layout="@layout/fragment_pickup_garbage"/>
+    <fragment android:id="@+id/profileFragment" android:name="info.twentysixproject.kamiraenergy.ProfileFragment"
+              android:label="fragment_profile" tools:layout="@layout/fragment_profile">
+        <action
+                android:id="@+id/profiletoeditprofile_action"
+                app:destination="@id/editprofileFragment" />
+        <action
+                android:id="@+id/profiletoprivacyfragment_action"
+                app:destination="@id/privacyFragment" />
+        <action
+                android:id="@+id/profiletotermsfragment_action"
+                app:destination="@id/termsConditionsFragment" />
+        <action
+                android:id="@+id/profiletoaboutfragment_action"
+                app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment android:id="@+id/orderFragment" android:name="info.twentysixproject.kamiraenergy.OrderFragment"
+              android:label="fragment_order" tools:layout="@layout/fragment_order"/>
+    <fragment
+            android:id="@+id/messageFragment"
+            android:name="info.twentysixproject.kamiraenergy.MessageFragment"
+            android:label="fragment_message"
+            tools:layout="@layout/fragment_message" />
+    <fragment
+            android:id="@+id/editprofileFragment"
+            android:name="info.twentysixproject.kamiraenergy.EditprofileFragment"
+            android:label="EditprofileFragment" />
+    <fragment
+            android:id="@+id/aboutFragment"
+            android:name="info.twentysixproject.kamiraenergy.AboutFragment"
+            android:label="fragment_about"
+            tools:layout="@layout/fragment_about" />
+    <fragment
+            android:id="@+id/termsConditionsFragment"
+            android:name="info.twentysixproject.kamiraenergy.TermsConditionsFragment"
+            android:label="fragment_terms_conditions"
+            tools:layout="@layout/fragment_terms_conditions" />
+    <fragment
+            android:id="@+id/privacyFragment"
+            android:name="info.twentysixproject.kamiraenergy.PrivacyFragment"
+            android:label="fragment_privacy"
+            tools:layout="@layout/fragment_privacy" />
+    <fragment
+            android:id="@+id/qrScannerFragment"
+            android:name="info.twentysixproject.kamiraenergy.QrScannerFragment"
+            android:label="fragment_qr_scanner"
+            tools:layout="@layout/fragment_qr_scanner" />
+    <fragment
+            android:id="@+id/pointsHistoryFragment"
+            android:name="info.twentysixproject.kamiraenergy.PointsHistoryFragment"
+            android:label="fragment_points_history"
+            tools:layout="@layout/fragment_points_history" />
+</navigation>

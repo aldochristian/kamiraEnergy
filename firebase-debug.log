@@ -1,0 +1,60 @@
+[debug] [2019-08-21T13:44:20.787Z] ----------------------------------------------------------------------
+[debug] [2019-08-21T13:44:20.799Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\aldoc\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init functions
+[debug] [2019-08-21T13:44:20.800Z] CLI Version:   7.2.4
+[debug] [2019-08-21T13:44:20.800Z] Platform:      win32
+[debug] [2019-08-21T13:44:20.801Z] Node Version:  v10.16.3
+[debug] [2019-08-21T13:44:20.807Z] Time:          Wed Aug 21 2019 21:44:20 GMT+0800 (China Standard Time)
+[debug] [2019-08-21T13:44:20.807Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-21T13:44:20.835Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-21T13:44:20.837Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\dev\Github Repo\kamiraEnergy
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2019-08-21T13:44:44.094Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-08-21T13:44:44.095Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-08-21T13:44:46.330Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-21T13:44:46.383Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects?pageSize=100  
+ 
+[debug] [2019-08-21T13:44:47.308Z] <<< HTTP RESPONSE 200
+[info] i  Using project twentysixproject-a4530 (twentysixproject)
+[info] 
+=== Functions Setup
+[info] 
+[info] A functions directory will be created in your project with a Node.js
+[info] package pre-configured. Functions can be deployed with firebase deploy.
+[info] 
+[debug] [2019-08-21T13:44:50.711Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-21T13:44:50.713Z] > authorizing via signed-in user
+[debug] [2019-08-21T13:44:50.716Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/twentysixproject-a4530  
+ 
+[debug] [2019-08-21T13:45:11.752Z] Server Error. connect ETIMEDOUT 216.58.196.10:443
+[debug] [2019-08-21T13:45:12.258Z] FirebaseError: Server Error. connect ETIMEDOUT 216.58.196.10:443
+    at Request._callback (C:\Users\aldoc\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:30:31)
+    at self.callback (C:\Users\aldoc\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:198:13)
+    at Request.EventEmitter.emit (domain.js:448:20)
+    at Request.onRequestError (C:\Users\aldoc\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:881:8)
+    at ClientRequest.emit (events.js:203:15)
+    at ClientRequest.EventEmitter.emit (domain.js:448:20)
+    at TLSSocket.socketErrorListener (_http_client.js:392:9)
+    at TLSSocket.emit (events.js:198:13)
+    at TLSSocket.EventEmitter.emit (domain.js:448:20)
+[error] 
+[error] Error: Failed to get Firebase project twentysixproject-a4530. Please make sure the project exists and your account has permission to access it.

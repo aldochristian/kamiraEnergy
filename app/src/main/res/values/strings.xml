@@ -1,0 +1,268 @@
+<resources>
+    <string name="app_name">Kamira</string>
+
+    <!-- My String start here -->
+    <!-- String for fragment_getpoints -->
+
+    <!-- End of My String -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyC3SrcUtXXXXXXXXXXXXXXXXXXXXXX
+    </string>
+
+    <string name="admob_app_id">ca-app-pub-3239677920600357~2463316049</string>
+
+    <string name="step_of">Step %1$d of %2$d</string>
+    <string name="section_format">Section : %1$d</string>
+
+    <string name="about_text">The best android implementation of material UI components. This app implemented based on
+        Google Design Guidelines.
+    </string>
+
+    <string name="version_unknown">Unknown</string>
+    <string name="app_version">Version</string>
+    <string name="webview_loading">Load Content...</string>
+
+    <!-- Firebase Strings -->
+    <string name="hint_user_id">User ID</string>
+    <string name="get_custom_token">Get Token</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_account">Create Account</string>
+    <string name="send_link">Send Link</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="verify_email">Verify Email</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="loading">Loading…</string>
+    <string name="custom_token">Custom Token</string>
+    <string name="signed_in">Signed In</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="token_null">Token: null</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="desc_firebase_lockup">Firebase logo and name</string>
+    <string name="auth_failed">Authentication failed</string>
+    <string name="start_phone_auth">Start</string>
+    <string name="verify_phone_auth">Verify</string>
+    <string name="resend_phone_auth">Resend</string>
+    <string name="hint_phone_number">Phone Number</string>
+    <string name="hint_verification_code">Verification Code</string>
+    <string name="status_code_sent">Code Sent</string>
+    <string name="status_verification_failed">Verification failed</string>
+    <string name="status_verification_succeeded">Verification succeeded</string>
+    <string name="status_sign_in_failed">Sign-in failed</string>
+    <string name="instant_validation">(instant validation)</string>
+
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+
+    <string name="phone_title_text">Phone Number</string>
+
+    <string name="quickstart_message">Click the SUBSCRIBE TO WEATHER button below to subscribe to the
+        weather topic. Messages sent to the weather topic will be received. The LOG TOKEN button logs the
+        InstanceID token to logcat.
+    </string>
+    <string name="subscribe_to_weather">Subscribe To Weather</string>
+    <string name="log_token">Log Token</string>
+
+    <string name="msg_subscribed">Subscribed to weather topic</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <string name="default_notification_channel_name" translatable="true">Weather</string>
+    <string name="msg_subscribe_failed">Failed to subscribe to weather topic</string>
+    <string name="fcm_message">FCM Message</string>
+    <string name="title_activity_firebase_ui">FirebaseUIActivity</string>
+
+    <!-- Menu on Screen -->
+    <string name="pick_up_garbage">Garbage</string>
+    <string name="pick_up_oilwaste">Cooking Oil</string>
+    <string name="redeem">Redeem</string>
+    <!-- Menu on bottom -->
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+
+    <!-- Maps -->
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps_java">Map</string>
+    <string name="action_geolocate">Pick Place</string>
+    <string name="default_info_title">Default Location</string>
+    <string name="default_info_snippet">No places found, because location permission is disabled.</string>
+    <string name="alpha">Alpha</string>
+    <string name="animate">Animate</string>
+    <string name="basic_map_demo_label">Basic Map</string>
+    <string name="basic_map_demo_description">Launches a map.</string>
+    <string name="buildings">Buildings</string>
+    <string name="camera_demo_label">Camera</string>
+    <string name="camera_demo_description">Demonstrates camera functions.</string>
+    <string name="circle_demo_label">Circles</string>
+    <string name="circle_demo_description">Demonstrates how to add Circles to a map.</string>
+
+    <string name="camera_clamping_demo_label">Camera Clamping</string>
+    <string name="camera_clamping_demo_description">Demonstrates how to constrain the camera to specific boundaries and zoom levels.</string>
+    <string name="clamp_latlng_adelaide">Clamp to Adelaide</string>
+    <string name="clamp_latlng_pacific">Clamp to Pacific</string>
+    <string name="clamp_latlng_reset">Reset LatLng Bounds</string>
+    <string name="clamp_min_zoom">MinZoom++</string>
+    <string name="clamp_max_zoom">MaxZoom--</string>
+    <string name="clamp_zoom_reset">Reset Zoom Bounds</string>
+
+    <string name="clear_map">Clear</string>
+    <string name="clickable">Clickable</string>
+    <string name="color">Color</string>
+    <string name="compass">Compass</string>
+    <string name="custom_info_contents">Custom info contents</string>
+    <string name="custom_info_window">Custom info window</string>
+    <string name="default_info_window">Default info window</string>
+    <string name="down_arrow">\u2193</string>
+    <string name="drag_melbourne">Drag Melbourne</string>
+    <string name="duration">Custom Duration</string>
+    <string name="events_demo_label">Events</string>
+    <string name="events_demo_description">Demonstrates event handling.</string>
+    <string name="fade_in">Fade In Tiles</string>
+    <string name="fill_alpha">Fill Alpha</string>
+    <string name="fill_hue">Fill Hue</string>
+    <string name="flat">Flat</string>
+    <string name="go_to_bondi">Go to Bondi</string>
+    <string name="go_to_santorini">Go to Santorini</string>
+    <string name="go_to_sydney">Go to Sydney</string>
+    <string name="ground_overlay_demo_label">Ground Overlays</string>
+    <string name="ground_overlay_demo_description">Demonstrates how to add a GroundOverlay to a map.</string>
+    <string name="hue">Hue</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="indoor">Indoor</string>
+    <string-array name="layers_array">
+        <item>@string/normal</item>
+        <item>@string/hybrid</item>
+        <item>@string/satellite</item>
+        <item>@string/terrain</item>
+        <item>@string/none_map</item>
+    </string-array>
+    <string name="layers_demo_label">Layers</string>
+    <string name="layers_demo_description">Demonstrates the different map layers.</string>
+    <string name="left_arrow">\u2190</string>
+    <string name="location_source_demo_label">Location Source Demo</string>
+    <string name="location_source_demo_description">Demonstrates how to use a custom location source.</string>
+    <string name="map_circle_description">Google Map with circles.</string>
+    <string name="map_not_ready">Map is not ready yet</string>
+    <string name="map_in_pager_demo_label">Map In Pager</string>
+    <string name="map_in_pager_demo_description">Demonstrates how to add a map to a ViewPager.</string>
+    <string name="marker_demo_label">Markers</string>
+    <string name="marker_close_info_window_on_retap_demo_label">Marker Close Info Window on Retap</string>
+    <string name="marker_close_info_window_on_retap_demo_description">Demonstrates how to close the info window when the currently selected marker is retapped.</string>
+    <string name="marker_demo_description">Demonstrates how to add Markers to a map.</string>
+    <string name="move_the_camera">Move the camera</string>
+    <string name="multi_map_demo_label">Multiple Maps</string>
+    <string name="multi_map_demo_description">Demonstrates how to show multiple maps in a single activity.</string>
+    <string name="my_location">My Location</string>
+    <string name="my_location_demo_label">My Location Demo</string>
+    <string name="my_location_demo_description">Demonstrates how to use GMS Location.</string>
+    <string name="mylocation_button">My Location Button</string>
+    <string name="mylocation_layer">My Location Layer</string>
+    <string name="none_map">None</string>
+    <string name="normal">Normal</string>
+    <string name="options_demo_label">Options</string>
+    <string name="options_demo_description">Demonstrates how to use Options to initialize a map.</string>
+    <string name="polygon_demo_label">Polygons</string>
+    <string name="polygon_demo_description">Demonstrates how to add Polygons to a map.</string>
+    <string name="polyline_demo_label">Polylines</string>
+    <string name="polyline_demo_description">Demonstrates how to add Polylines to a map.</string>
+    <string name="programmatic_demo_label">Programmatically add map</string>
+    <string name="programmatic_demo_description">Demonstrates how to add a MapFragment programmatically.</string>
+    <string name="properties_circle">Properties for Circle(s)</string>
+    <string name="properties_australia_polyline">Properties for Polyline over Australia</string>
+    <string name="properties_australia_polygon">Properties for Polygon over Australia</string>
+    <string name="rotate">Rotate Gestures</string>
+    <string name="raw_map_view_demo_label">Raw MapView</string>
+    <string name="raw_map_view_demo_description">Demonstrates how to use a raw MapView.</string>
+    <string name="reset_map">Reset</string>
+    <string name="retain_map_demo_label">Retain map</string>
+    <string name="retain_map_demo_description">Demonstrates how to reuse a MapFragment.</string>
+    <string name="right_arrow">\u2192</string>
+    <string name="rotation">Rotation:</string>
+    <string name="satellite">Satellite</string>
+    <string name="save_state_demo_label">Save the state of a MapFragment.</string>
+    <string name="save_state_demo_description">Demonstrates how to save the state of a MapFragment upon rotation of the device.</string>
+    <string name="save_state_instructions">Drag the marker, tap on it to change its color and rotate the device to check that the state of the map is preserved.</string>
+    <string name="scroll">Scroll Gestures</string>
+    <string name="snapshot_clear_button">Clear</string>
+    <string name="snapshot_demo_label">Snapshot</string>
+    <string name="snapshot_demo_description">Demonstrates how to take a snapshot of the map.</string>
+    <string name="snapshot_holder_description">Area for the map snapshot.</string>
+    <string name="snapshot_take_button">Take snapshot</string>
+    <string name="stop_animation">\u25A0</string>
+    <string name="stroke_alpha">Stroke Alpha</string>
+    <string name="stroke_hue">Stroke Hue</string>
+    <string name="stroke_joint_type">Stroke Joint Type</string>
+    <string name="stroke_pattern">Stroke Pattern</string>
+    <string name="stroke_width">Stroke Width</string>
+    <string name="swipe">\u2190 Swipe \u2192</string>
+    <string name="switch_image">Switch Image</string>
+    <string name="tags_demo_label">Tags</string>
+    <string name="tags_demo_description">Demonstrates how to get and set tags on API objects.</string>
+    <string name="tags_demo_map_description">Map with a circle, ground overlay, marker, polygon and polyline.</string>
+    <string name="tap_instructions">Tap or long press on the map</string>
+    <string name="terrain">Terrain</string>
+    <string name="tile_coordinate_demo_label">Tile Coordinate Overlay</string>
+    <string name="tile_coordinate_demo_description">Demonstrates how to add a tile overlay with tile coordinates to a map.</string>
+    <string name="tile_overlay_demo_label">Tile Overlays</string>
+    <string name="tile_overlay_demo_description">Demonstrates how to add a tile overlay to a map.</string>
+    <string name="tilt">Tilt Gestures</string>
+    <string name="tilt_less">\u2193</string>
+    <string name="tilt_more">\u2191</string>
+    <string name="traffic">Traffic</string>
+    <string name="transparency">Transparency</string>
+    <string name="ui_settings_demo_label">UI Settings</string>
+    <string name="ui_settings_demo_description">Demonstrates how to alter user interface settings.</string>
+    <string name="up_arrow">\u2191</string>
+    <string name="visible_region_demo_label">Visible Regions</string>
+    <string name="visible_region_demo_description">Demonstrates how to use Visible Regions.</string>
+    <string name="vr_aus_button">AUS</string>
+    <string name="vr_normal_button">Normal</string>
+    <string name="vr_more_padded_button">More</string>
+    <string name="vr_soh_button">SOH</string>
+    <string name="vr_sfo_button">SFO</string>
+    <string name="wait_for_map_load">Wait for Map Load</string>
+    <string name="width">Width</string>
+    <string name="zoom_buttons">Zoom Buttons</string>
+    <string name="zoom_gestures">Zoom Gestures</string>
+    <string name="zoom_in">+</string>
+    <string name="zoom_out">-</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="OK">Ok</string>
+    <string name="CANCEL">Cancel</string>
+
+    <!-- FCM Channel for Kamira -->
+    <string name="notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <string name="promotion_notification_channel_name" translatable="true">Promotion</string>
+    <string name="fcm_message_promotion">Kamira Channel</string>
+
+    <!-- OnGoing Fragment -->
+    <string name="collector_name">Pending on collector pool</string>
+
+    <!-- About and versioning -->
+    <string name="version">Alpha 0.0.1</string>
+    <string name="last_update">September 2019</string>
+    <string name="landing_page">https://www.kamira.energy</string>
+    <string name="contact_email">email : info@kamira.energy</string>
+    <string name="address">Address : Jl. Sam Ratulangi No. 458,\nHotel Gran Puri Lt. 3 \nCo-Working space : Sarang Inovasi \nManado - Sulawesi Utara</string>
+    <string name="title_activity_reward">RewardActivity</string>
+
+
+</resources>

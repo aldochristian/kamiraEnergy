@@ -1,0 +1,159 @@
+package info.twentysixproject.kamiraenergy.viewmodel
+
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import info.twentysixproject.kamiraenergy.model.SlideModel
+import androidx.databinding.adapters.NumberPickerBindingAdapter.setValue
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestoreException
+import info.twentysixproject.kamiraenergy.dataclass.PromoBanner
+import info.twentysixproject.kamiraenergy.utils.Utils
+
+
+class HomeViewModel: ViewModel(){
+
+    private lateinit var promoReference: DatabaseReference
+
+    val TAG: String = "HomeViewModel"
+    val storage = FirebaseStorage.getInstance("gs://twentysixproject-a4530")
+    val db = FirebaseFirestore.getInstance()
+    val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    val user: FirebaseUser? = auth.currentUser
+
+    var myPoint: String? = null
+    var myContribution: String? = null
+
+    fun loadImageSlider(): ArrayList<SlideModel> {
+
+        //Image Slider management
+        val imageList = ArrayList<SlideModel>()
+        //imageList.add(SlideModel("https://1.bp.blogspot.com/-GUZsgr8my50/XJUWOhyHyaI/AAAAAAAABUo/bljp3LCS3SUtj-judzlntiETt7G294WcgCLcBGAs/s1600/fox.jpg", "Foxes live wild in the city.", true))
+        //imageList.add(SlideModel("https://2.bp.blogspot.com/-CyLH9NnPoAo/XJUWK2UHiMI/AAAAAAAABUk/D8XMUIGhDbwEhC29dQb-7gfYb16GysaQgCLcBGAs/s1600/tiger.jpg"))
+        //imageList.add(SlideModel("https://3.bp.blogspot.com/-uJtCbNrBzEc/XJUWQPOSrfI/AAAAAAAABUs/ZlReSwpfI3Ack60629Rv0N8hSrPFHb3TACLcBGAs/s1600/elephant.jpg", "The population of elephants is decreasing in the world."))
+        imageList.add(SlideModel(
+            "https://firebasestorage.googleapis.com/v0/b/twentysixproject-a4530/o/promo%2F20190901_073242_0000.png?alt=media&token=bcf8660f-b90f-49a5-9807-fafa75712a73", "Wait something from use"))
+        return imageList
+    }
+
+    fun getProfileUserFirestore(){
+        db.collection("users")
+            .document(user!!.uid)
+            .get()
+            .addOnSuccessListener { document ->
+                myPoint = document.get("point").toString()
+                myContribution = document.get("contribution").toString()
+
+            }.addOnFailureListener {
+
+            }
+    }
+
+    val userOrder = MutableLiveData<String>()
+    fun getOrderFirestore(){
+        //val docRef = db.collection("users").document(user!!.uid).collection("orders")
+
+        db.collection("orders")
+            .whereEqualTo("user", user?.uid)
+            .addSnapshotListener { value, e ->
+            if ( e != null) {
+                Log.w(TAG, "Listen failed ", e)
+                return@addSnapshotListener
+            }
+                for (doc in value!!) {
+                    doc.getString("status")?.let {
+                        //userOrder.add(it)
+                        userOrder.value = it
+                    }
+                }
+                Log.d(TAG, "Current status: $userOrder")
+        }
+    }
+
+    fun getOrder(): MutableLiveData<String>{
+        return userOrder
+    }
+
+    fun activatedCode(code: String): Boolean{
+        val redeemCodeDoc = db.collection("redeemcode").document(code)
+        var codeFoundStatus = false
+        val contribution = 0.00
+        var pointToBeAdded = 0.00
+
+        db.runTransaction {
+            val snapshot = it.get(redeemCodeDoc)
+            val activatedBy = snapshot.get("activatedBy").toString()
+            val contribution = snapshot.get("contribution") as Double
+            pointToBeAdded = snapshot.get("pointcount") as Double
+            if (activatedBy == "blank") {
+                it.update(redeemCodeDoc, "activatedBy", user?.uid)
+            } else {
+                throw FirebaseFirestoreException(
+                    "code has activated",
+                    FirebaseFirestoreException.Code.ABORTED
+                )
+            }
+        }.addOnSuccessListener {
+            Log.d(TAG, "Transaction success : $it")
+            givePointsandCode(code, pointToBeAdded, contribution)
+            codeFoundStatus = true
+        }.addOnFailureListener {
+            Log.w(TAG, "Transaction failure", it)
+            codeFoundStatus = false
+        }
+
+        return codeFoundStatus
+    }
+
+    fun givePointsandCode(code: String, points: Double, contribution: Double){
+        val data = hashMapOf(
+           "codeReward" to code,
+            "addedBy" to "Rewards bot",
+            "dateCreated" to FieldValue.serverTimestamp(),
+            "amount" to points,
+            "contribution" to contribution
+        )
+
+        db.collection("users").document(user!!.uid)
+            .collection("pointHistory")
+            .add(data)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
+    }
+
+    fun welcomeMessage(){
+        val msg = hashMapOf(
+            "categorize" to "Welcome message",
+            "dateCreated" to FieldValue.serverTimestamp(),
+            "dateValid" to Utils.convertStringtoDate("Sep 27, 2019"),
+            "header" to "Welcome to kamira",
+            "img" to null
+        )
+
+        db.collection("users").document("inbox")
+            .set(msg)
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+    }
+
+    fun limitedOrder(){
+        /**
+         * This function purpose is to limit only 3 - 5 order for user not yet verified / activated
+         * install observer untuk check counter
+         */
+
+    }
+
+}
