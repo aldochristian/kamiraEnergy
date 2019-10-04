@@ -7,51 +7,76 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.*
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.FirebaseFunctionsException
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
+import info.twentysixproject.kamiraenergy.databinding.FragmentHomeBinding
 import info.twentysixproject.kamiraenergy.dataclass.Redeemcode
 import info.twentysixproject.kamiraenergy.interfaces.ItemClickListener
 import info.twentysixproject.kamiraenergy.utils.ImageSlider
 import info.twentysixproject.kamiraenergy.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.dialog_redeem.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
-class HomeFragment : Fragment(), Animation.AnimationListener {
+class HomeFragment : Fragment() {
 
     val TAG: String = "HomeFragment"
     internal var forHome: HomeFragment.OnFragmentInteractionForHome? = null
     lateinit var functions: FirebaseFunctions
     lateinit var viewModel: HomeViewModel
-    lateinit var animFadein: Animation
-    var currentStatus: String = ""
-
-    var myPoints: String? = null
-    var myContribution: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val binding: FragmentHomeBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_home, container, false)
+
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+
+        binding.model = viewModel
+
+        viewModel.myPoints.observe(this, Observer<String> {
+            binding.frhomePointdet.text = "We give you "+it+" points"
+        })
+        viewModel.myContribution.observe(this, Observer<String> {
+            binding.frhomeContributiondet.text = "You contributed with save "+it+" Ltr plastic"
+        })
+
+        binding.frhomeFieldgarbage.setOnClickListener {
+            forHome?.openGmaps()
+        }
+        binding.frhomeFieldrewards.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.hometopointsfr_action, null)
+        )
+        binding.frhomeRedeem.setOnClickListener {
+            showRedeemDialog()
+        }
+
+        binding.setLifecycleOwner(this)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        functions = FirebaseFunctions.getInstance()
+
         val imageList = viewModel.loadImageSlider()
         val imageSlider = view?.findViewById<ImageSlider>(R.id.image_slider)
         imageSlider?.setImageList(imageList)
@@ -63,36 +88,6 @@ class HomeFragment : Fragment(), Animation.AnimationListener {
             }
         })
 
-        viewModel.getOrderFirestore()
-        viewModel.getOrder().observe(this, Observer {
-            status -> Log.d(TAG, "Here the status change "+status)
-            currentStatus = status
-        })
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        functions = FirebaseFunctions.getInstance()
-
-        //Set an OnClickListener, using Listener button
-        animFadein = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in)
-        animFadein.setAnimationListener(this) //set animation listener
-
-        view.findViewById<LinearLayout>(R.id.frhome_fieldgarbage)?.setOnClickListener {
-            forHome?.openGmaps()
-        }
-
-        view.findViewById<LinearLayout>(R.id.frhome_fieldrewards)?.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.hometopointsfr_action, null)
-        )
-
-        view.findViewById<LinearLayout>(R.id.frhome_redeem)?.setOnClickListener {
-            showRedeemDialog()
-        }
-
-        //view.findViewById<TextView>(R.id.frhome_pointdet).text = "We gave you "+viewModel.myPoint+"for thank"
-        //view.findViewById<TextView>(R.id.frhome_contributiondet).text = "You had contributed "+viewModel.myContribution+"for recycle"
     }
 
     private fun addMessage(text: String): Task<String> {
@@ -197,18 +192,6 @@ class HomeFragment : Fragment(), Animation.AnimationListener {
 
     fun showSnackbar(message: String) {
         //Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show()
-    }
-
-    override fun onAnimationRepeat(p0: Animation?) {
-        //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onAnimationEnd(p0: Animation?) {
-        //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onAnimationStart(p0: Animation?) {
-        //To change body of created functions use File | Settings | File Templates.
     }
 
 }

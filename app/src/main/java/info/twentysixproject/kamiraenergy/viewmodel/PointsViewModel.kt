@@ -1,6 +1,7 @@
 package info.twentysixproject.kamiraenergy.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.Timestamp
@@ -18,7 +19,9 @@ class PointsViewModel : ViewModel() {
 
     val TAG:String ="PointsViewModel"
 
-    val myPoints = MutableLiveData<String>()
+    private val _mypoints = MutableLiveData<String>()
+    val myPoints: LiveData<String>
+        get() = _mypoints
 
     init {
         fetchFirestore()
@@ -29,9 +32,9 @@ class PointsViewModel : ViewModel() {
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    myPoints.value = document.get("point").toString()
+                    _mypoints.value = document.get("point").toString()
                 } else {
-                    myPoints.value = "0"
+                    _mypoints.value = "0"
                 }
             }
             .addOnFailureListener { exception ->

@@ -13,8 +13,12 @@ import androidx.databinding.adapters.NumberPickerBindingAdapter.setValue
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.lifecycle.LiveData
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.iid.FirebaseInstanceId
 import info.twentysixproject.kamiraenergy.dataclass.PromoBanner
 import info.twentysixproject.kamiraenergy.utils.Utils
 
@@ -29,8 +33,17 @@ class HomeViewModel: ViewModel(){
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
     val user: FirebaseUser? = auth.currentUser
 
-    var myPoint: String? = null
-    var myContribution: String? = null
+    private val _mypoints = MutableLiveData<String>()
+    val myPoints: LiveData<String>
+        get() = _mypoints
+
+    private val _mycontribution = MutableLiveData<String>()
+    val myContribution: LiveData<String>
+        get() = _mycontribution
+
+    init {
+        getProfileUserFirestore()
+    }
 
     fun loadImageSlider(): ArrayList<SlideModel> {
 
@@ -39,8 +52,9 @@ class HomeViewModel: ViewModel(){
         //imageList.add(SlideModel("https://1.bp.blogspot.com/-GUZsgr8my50/XJUWOhyHyaI/AAAAAAAABUo/bljp3LCS3SUtj-judzlntiETt7G294WcgCLcBGAs/s1600/fox.jpg", "Foxes live wild in the city.", true))
         //imageList.add(SlideModel("https://2.bp.blogspot.com/-CyLH9NnPoAo/XJUWK2UHiMI/AAAAAAAABUk/D8XMUIGhDbwEhC29dQb-7gfYb16GysaQgCLcBGAs/s1600/tiger.jpg"))
         //imageList.add(SlideModel("https://3.bp.blogspot.com/-uJtCbNrBzEc/XJUWQPOSrfI/AAAAAAAABUs/ZlReSwpfI3Ack60629Rv0N8hSrPFHb3TACLcBGAs/s1600/elephant.jpg", "The population of elephants is decreasing in the world."))
+
         imageList.add(SlideModel(
-            "https://firebasestorage.googleapis.com/v0/b/twentysixproject-a4530/o/promo%2F20190901_073242_0000.png?alt=media&token=bcf8660f-b90f-49a5-9807-fafa75712a73", "Wait something from use"))
+            "https://firebasestorage.googleapis.com/v0/b/twentysixproject-a4530/o/promo%2Fjaga_botol_tidak_ke_laut.png?alt=media&token=7de26d54-1990-4133-8ce1-c43eb43c9569"))
         return imageList
     }
 
@@ -49,37 +63,12 @@ class HomeViewModel: ViewModel(){
             .document(user!!.uid)
             .get()
             .addOnSuccessListener { document ->
-                myPoint = document.get("point").toString()
-                myContribution = document.get("contribution").toString()
+                _mypoints.value = document.get("point").toString()
+                _mycontribution.value = document.get("contribution").toString()
 
             }.addOnFailureListener {
 
             }
-    }
-
-    val userOrder = MutableLiveData<String>()
-    fun getOrderFirestore(){
-        //val docRef = db.collection("users").document(user!!.uid).collection("orders")
-
-        db.collection("orders")
-            .whereEqualTo("user", user?.uid)
-            .addSnapshotListener { value, e ->
-            if ( e != null) {
-                Log.w(TAG, "Listen failed ", e)
-                return@addSnapshotListener
-            }
-                for (doc in value!!) {
-                    doc.getString("status")?.let {
-                        //userOrder.add(it)
-                        userOrder.value = it
-                    }
-                }
-                Log.d(TAG, "Current status: $userOrder")
-        }
-    }
-
-    fun getOrder(): MutableLiveData<String>{
-        return userOrder
     }
 
     fun activatedCode(code: String): Boolean{
@@ -126,11 +115,29 @@ class HomeViewModel: ViewModel(){
             .collection("pointHistory")
             .add(data)
             .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+                transactionPointContribution(points, contribution)
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
             }
+    }
+
+    fun transactionPointContribution(points: Double, contribution: Double){
+
+        val sfDocRef = db.collection("users").document(user!!.uid)
+
+        db.runTransaction { transaction ->
+            val snapshot = transaction.get(sfDocRef)
+
+            val newPoint = snapshot.getDouble("point")!! + points
+            val newContribution = snapshot.getDouble("contribution")!! + contribution
+            transaction.update(sfDocRef, "point", newPoint)
+            transaction.update(sfDocRef, "contribution", newContribution)
+
+            null
+        }.addOnSuccessListener { Log.d(TAG, "Transaction success!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Transaction failure.", e) }
+
     }
 
     fun welcomeMessage(){
@@ -153,7 +160,6 @@ class HomeViewModel: ViewModel(){
          * This function purpose is to limit only 3 - 5 order for user not yet verified / activated
          * install observer untuk check counter
          */
-
     }
 
 }

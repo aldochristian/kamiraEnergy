@@ -3,6 +3,7 @@ package info.twentysixproject.kamiraenergy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
@@ -11,6 +12,7 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import kotlinx.android.synthetic.main.activity_phone_auth.*
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
@@ -325,6 +327,7 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         when (view.id) {
             R.id.buttonStartVerification -> {
+                countDownTimer()
                 if (!validatePhoneNumber()) {
                     return
                 }
@@ -343,6 +346,24 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
             R.id.buttonResend -> resendVerificationCode(fieldPhoneNumber.text.toString(), resendToken)
             //R.id.signOutButton -> signOut()
         }
+    }
+
+    private fun countDownTimer() {
+        val countDownTimer = object : CountDownTimer((1000 * 60 * 2).toLong(), 1000) {
+            override fun onTick(l: Long) {
+                val text = String.format(
+                    Locale.getDefault(), "%02d:%02d",
+                    TimeUnit.MILLISECONDS.toMinutes(l) % 60,
+                    TimeUnit.MILLISECONDS.toSeconds(l) % 60
+                )
+                phone_counter.text = text
+            }
+
+            override fun onFinish() {
+                phone_counter.text = "00:00"
+            }
+        }
+        countDownTimer.start()
     }
 
     companion object {

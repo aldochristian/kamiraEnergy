@@ -360,7 +360,7 @@ public class MapsActivityJava extends FragmentActivity implements OnMapReadyCall
     String userID = user.getUid();
 
     private void createOrder(double lat, double lot){
-        DialogCollectorFragment dialog = new DialogCollectorFragment();
+        final DialogCollectorFragment dialog = new DialogCollectorFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         dialog.show(ft, "Dialog");
 
@@ -392,13 +392,12 @@ public class MapsActivityJava extends FragmentActivity implements OnMapReadyCall
             @Override
             public void onSuccess(Void aVoid) {
                 updateLimitCounter();
-                dialogPickupGarbage();
+                dialogPickupGarbage(false);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                //TODO : Implement error dialog
-                Log.d(TAG,"Fail to create order");
+                dialogPickupGarbage(true);
             }
         });
 
@@ -516,7 +515,7 @@ public class MapsActivityJava extends FragmentActivity implements OnMapReadyCall
         builder.show();
     }
 
-    private void dialogPickupGarbage(){
+    private void dialogPickupGarbage(Boolean failure){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
         dialog.setContentView(R.layout.dialog_order_created);
@@ -528,13 +527,20 @@ public class MapsActivityJava extends FragmentActivity implements OnMapReadyCall
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
         ImageView dialogIcon = dialog.findViewById(R.id.icon);
-        dialogIcon.setImageResource(R.drawable.ic_assignment_turned_in_black_24dp);
+        TextView textTitle = dialog.findViewById(R.id.title);
+        TextView textContent = dialog.findViewById(R.id.content);
+
+        if(failure){
+            dialogIcon.setImageResource(R.drawable.ic_cancel);
+            textTitle.setText("Fail to create order");
+            textContent.setText("You had limited for order, please wait your order to be completed\n Otherwise kindly connect with Kamira team");
+        }else{
+            dialogIcon.setImageResource(R.drawable.ic_assignment_turned_in_black_24dp);
+        }
 
         ((AppCompatButton) dialog.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), ((AppCompatButton) v).getText().
-                        toString() + " Clicked", Toast.LENGTH_SHORT).show();
                 //dialog.dismiss();
                 finish();
             }

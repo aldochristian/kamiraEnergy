@@ -154,5 +154,24 @@ exports.inboxNotif = functions.firestore.document('users/{usersUid}/inbox/{inbox
     //Send notifications to all tokens.
     //const sendMsg = admin.messaging().sendToDevice(myData.fcmToken, payload);
     //return sendMsg;
-    
+
+});
+
+exports.createUser = functions.https.onCall((data, context) => {
+  // ...
+  const newValue = data.text;
+  const idUser = context.auth.uid;
+  console.log("my id ",idUser);
+
+      let dataUser = {
+        banned: false,
+        counter: 0.00
+      };
+      
+      // Add a new document in collection "cities" with ID 'LA'
+      //let setDoc = db.collection('users').doc(idUser).collection("adminSet").document("counterRequest").set(dataUser)
+      let dbAdmin = db.collection('users').doc(idUser).collection("adminSet").doc("counterRequest");
+
+      return dbAdmin
+        .set(dataUser, {merge: true});
 });
