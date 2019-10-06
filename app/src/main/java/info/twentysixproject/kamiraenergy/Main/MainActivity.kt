@@ -1,4 +1,4 @@
-package info.twentysixproject.kamiraenergy
+package info.twentysixproject.kamiraenergy.Main
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -9,7 +9,6 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -18,13 +17,15 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
+import info.twentysixproject.kamiraenergy.Main.Fragments.HomeFragment
+import info.twentysixproject.kamiraenergy.Main.Fragments.ProfileFragment
+import info.twentysixproject.kamiraenergy.R
 
 class MainActivity : AppCompatActivity(),
     HomeFragment.OnFragmentInteractionForHome,

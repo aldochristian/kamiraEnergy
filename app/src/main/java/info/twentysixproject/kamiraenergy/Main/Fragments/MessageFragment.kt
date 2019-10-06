@@ -1,4 +1,4 @@
-package info.twentysixproject.kamiraenergy
+package info.twentysixproject.kamiraenergy.Main.Fragments
 
 
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.get
+import info.twentysixproject.kamiraenergy.R
 import info.twentysixproject.kamiraenergy.adapter.InboxAdapter
 import info.twentysixproject.kamiraenergy.adapter.InboxListener
 import info.twentysixproject.kamiraenergy.databinding.FragmentMessageBinding

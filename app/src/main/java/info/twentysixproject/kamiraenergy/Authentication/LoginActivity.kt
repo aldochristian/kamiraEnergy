@@ -1,4 +1,4 @@
-package info.twentysixproject.kamiraenergy
+package info.twentysixproject.kamiraenergy.Authentication
 
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +15,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.UserProfileChangeRequest
+import info.twentysixproject.kamiraenergy.R
 import java.util.concurrent.TimeUnit
 
 class LoginActivity : AppCompatActivity() {

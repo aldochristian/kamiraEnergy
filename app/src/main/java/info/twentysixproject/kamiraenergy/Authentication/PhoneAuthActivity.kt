@@ -1,4 +1,4 @@
-package info.twentysixproject.kamiraenergy
+package info.twentysixproject.kamiraenergy.Authentication
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +11,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import info.twentysixproject.kamiraenergy.Main.MainActivity
+import info.twentysixproject.kamiraenergy.R
 import kotlinx.android.synthetic.main.activity_phone_auth.*
 import java.util.*
 import java.util.concurrent.TimeUnit

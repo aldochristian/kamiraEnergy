@@ -56,7 +56,7 @@
                 android:value="@string/default_notification_channel_id" />
 
         <activity
-                android:name=".SplashActivity"
+                android:name=".Authentication.SplashActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
                 android:label="@string/app_name"
                 android:theme="@style/FullscreenTheme">
@@ -67,7 +67,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".MapsActivityJava"
+                android:name=".Main.MapsActivityJava"
                 android:label="@string/title_activity_maps_java" />
         <activity
                 android:name=".PickupGarbageFragment"
@@ -75,8 +75,8 @@
         <activity
                 android:name=".MapsActivity"
                 android:label="@string/title_activity_maps" />
-        <activity android:name=".PhoneAuthActivity"></activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".Authentication.PhoneAuthActivity"></activity>
+        <activity android:name=".Authentication.LoginActivity" />
         <activity
                 android:name=".utils.FirebaseUIActivity"
                 android:label="@string/title_activity_firebase_ui"
@@ -99,7 +99,7 @@
         <meta-data
                 android:name="com.google.firebase.messaging.default_notification_channel_id"
                 android:value="@string/default_notification_channel_id" /> <!-- [END fcm_default_channel] -->
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Main.MainActivity" />
 
         <service
                 android:name=".utils.MyFirebaseMessagingService"

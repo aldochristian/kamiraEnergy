@@ -1,4 +1,4 @@
-package info.twentysixproject.kamiraenergy
+package info.twentysixproject.kamiraenergy.Main.Fragments
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import info.twentysixproject.kamiraenergy.R
 import info.twentysixproject.kamiraenergy.adapter.OnGoingOrderListener
 import info.twentysixproject.kamiraenergy.adapter.OrderAdapter
 import info.twentysixproject.kamiraenergy.databinding.OngoingOrderFragmentBinding
@@ -29,7 +30,8 @@ class OngoingOrderFragment : Fragment() {
     ): View? {
         // Get a reference to the binding object and inflate the fragment views.
         val binding: OngoingOrderFragmentBinding = DataBindingUtil.inflate(
-            inflater, R.layout.ongoing_order_fragment, container, false)
+            inflater,
+            R.layout.ongoing_order_fragment, container, false)
 
         viewModel = ViewModelProviders.of(this).get(OngoingOrderViewModel::class.java)
 
@@ -64,7 +66,8 @@ class OngoingOrderFragment : Fragment() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Confirm for cancellation")
         builder.setMessage("Are you sure for cancellation ?")
-        builder.setPositiveButton(R.string.OK,
+        builder.setPositiveButton(
+            R.string.OK,
             DialogInterface.OnClickListener { dialogInterface, i ->
                 Log.d(TAG, "Here we are fo cancel "+id)
                 viewModel.updateToCancel(id)

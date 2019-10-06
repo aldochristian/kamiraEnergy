@@ -3,7 +3,7 @@ package info.twentysixproject.kamiraenergy.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import info.twentysixproject.kamiraenergy.HomeFragment
+import info.twentysixproject.kamiraenergy.Main.Fragments.HomeFragment
 
 class TabsAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 

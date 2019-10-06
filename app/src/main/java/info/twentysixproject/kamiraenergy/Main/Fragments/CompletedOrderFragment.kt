@@ -1,16 +1,15 @@
-package info.twentysixproject.kamiraenergy
+package info.twentysixproject.kamiraenergy.Main.Fragments
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import info.twentysixproject.kamiraenergy.R
 import info.twentysixproject.kamiraenergy.adapter.CompleteOrderAdapter
-import info.twentysixproject.kamiraenergy.adapter.CompleteOrderListener
 import info.twentysixproject.kamiraenergy.databinding.CompletedOrderFragmentBinding
 import info.twentysixproject.kamiraenergy.viewmodel.CompletedOrderViewModel
 
@@ -24,7 +23,8 @@ class CompletedOrderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding: CompletedOrderFragmentBinding = DataBindingUtil.inflate(
-            inflater, R.layout.completed_order_fragment, container, false)
+            inflater,
+            R.layout.completed_order_fragment, container, false)
 
         viewModel = ViewModelProviders.of(this).get(CompletedOrderViewModel::class.java)
 

@@ -1,4 +1,4 @@
-package info.twentysixproject.kamiraenergy
+package info.twentysixproject.kamiraenergy.Main.Fragments
 
 
 import android.app.Dialog
@@ -10,7 +10,6 @@ import android.view.*
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -18,24 +17,19 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.FirebaseFunctionsException
-import com.google.firebase.iid.FirebaseInstanceId
-import com.google.firebase.messaging.FirebaseMessaging
+import info.twentysixproject.kamiraenergy.R
 import info.twentysixproject.kamiraenergy.databinding.FragmentHomeBinding
-import info.twentysixproject.kamiraenergy.dataclass.Redeemcode
 import info.twentysixproject.kamiraenergy.interfaces.ItemClickListener
 import info.twentysixproject.kamiraenergy.utils.ImageSlider
 import info.twentysixproject.kamiraenergy.viewmodel.HomeViewModel
-import kotlinx.android.synthetic.main.dialog_redeem.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
 
     val TAG: String = "HomeFragment"
-    internal var forHome: HomeFragment.OnFragmentInteractionForHome? = null
+    internal var forHome: OnFragmentInteractionForHome? = null
     lateinit var functions: FirebaseFunctions
     lateinit var viewModel: HomeViewModel
 

@@ -1,20 +1,16 @@
-package info.twentysixproject.kamiraenergy
+package info.twentysixproject.kamiraenergy.Main.Fragments
 
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.*
+import info.twentysixproject.kamiraenergy.R
 import kotlinx.android.synthetic.main.fragment_order.*
 
 

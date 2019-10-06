@@ -4,7 +4,7 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/main_navgs"
             app:startDestination="@id/homeFragment">
 
-    <fragment android:id="@+id/homeFragment" android:name="info.twentysixproject.kamiraenergy.HomeFragment"
+    <fragment android:id="@+id/homeFragment" android:name="info.twentysixproject.kamiraenergy.Main.Fragments.HomeFragment"
               android:label="fragment_home" tools:layout="@layout/fragment_home">
         <action android:id="@+id/hometopickup_action"
                 app:destination="@id/pickupGarbageFragment"/>
@@ -27,7 +27,7 @@
     <fragment android:id="@+id/pickupGarbageFragment"
               android:name="info.twentysixproject.kamiraenergy.PickupGarbageFragment"
               android:label="fragment_pickup_garbage" tools:layout="@layout/fragment_pickup_garbage"/>
-    <fragment android:id="@+id/profileFragment" android:name="info.twentysixproject.kamiraenergy.ProfileFragment"
+    <fragment android:id="@+id/profileFragment" android:name="info.twentysixproject.kamiraenergy.Main.Fragments.ProfileFragment"
               android:label="fragment_profile" tools:layout="@layout/fragment_profile">
         <action
                 android:id="@+id/profiletoeditprofile_action"
@@ -42,30 +42,30 @@
                 android:id="@+id/profiletoaboutfragment_action"
                 app:destination="@id/aboutFragment" />
     </fragment>
-    <fragment android:id="@+id/orderFragment" android:name="info.twentysixproject.kamiraenergy.OrderFragment"
+    <fragment android:id="@+id/orderFragment" android:name="info.twentysixproject.kamiraenergy.Main.Fragments.OrderFragment"
               android:label="fragment_order" tools:layout="@layout/fragment_order"/>
     <fragment
             android:id="@+id/messageFragment"
-            android:name="info.twentysixproject.kamiraenergy.MessageFragment"
+            android:name="info.twentysixproject.kamiraenergy.Main.Fragments.MessageFragment"
             android:label="fragment_message"
             tools:layout="@layout/fragment_message" />
     <fragment
             android:id="@+id/editprofileFragment"
-            android:name="info.twentysixproject.kamiraenergy.EditprofileFragment"
+            android:name="info.twentysixproject.kamiraenergy.Main.Fragments.EditprofileFragment"
             android:label="EditprofileFragment" />
     <fragment
             android:id="@+id/aboutFragment"
-            android:name="info.twentysixproject.kamiraenergy.AboutFragment"
+            android:name="info.twentysixproject.kamiraenergy.Main.Fragments.AboutFragment"
             android:label="fragment_about"
             tools:layout="@layout/fragment_about" />
     <fragment
             android:id="@+id/termsConditionsFragment"
-            android:name="info.twentysixproject.kamiraenergy.TermsConditionsFragment"
+            android:name="info.twentysixproject.kamiraenergy.Main.Fragments.TermsConditionsFragment"
             android:label="fragment_terms_conditions"
             tools:layout="@layout/fragment_terms_conditions" />
     <fragment
             android:id="@+id/privacyFragment"
-            android:name="info.twentysixproject.kamiraenergy.PrivacyFragment"
+            android:name="info.twentysixproject.kamiraenergy.Main.Fragments.PrivacyFragment"
             android:label="fragment_privacy"
             tools:layout="@layout/fragment_privacy" />
     <fragment

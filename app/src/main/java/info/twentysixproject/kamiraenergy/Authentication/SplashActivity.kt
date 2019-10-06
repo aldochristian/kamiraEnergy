@@ -1,9 +1,10 @@
-package info.twentysixproject.kamiraenergy
+package info.twentysixproject.kamiraenergy.Authentication
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Handler
+import info.twentysixproject.kamiraenergy.R
 
 class SplashActivity : AppCompatActivity() {
     private var mDelayHandler: Handler? = null

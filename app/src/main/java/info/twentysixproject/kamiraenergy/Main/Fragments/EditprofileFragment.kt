@@ -1,4 +1,4 @@
-package info.twentysixproject.kamiraenergy
+package info.twentysixproject.kamiraenergy.Main.Fragments
 
 import android.app.Dialog
 import androidx.lifecycle.ViewModelProviders
@@ -9,13 +9,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import info.twentysixproject.kamiraenergy.R
 import info.twentysixproject.kamiraenergy.databinding.EditprofileFragmentBinding
 import info.twentysixproject.kamiraenergy.viewmodel.EditprofileViewModel
-import kotlinx.android.synthetic.main.dialog_order_created.*
-import kotlinx.android.synthetic.main.editprofile_fragment.*
 
 
 class EditprofileFragment : Fragment() {
@@ -33,7 +31,8 @@ class EditprofileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding: EditprofileFragmentBinding = DataBindingUtil.inflate(
-            inflater, R.layout.editprofile_fragment, container, false)
+            inflater,
+            R.layout.editprofile_fragment, container, false)
 
         if(activity is AppCompatActivity){
             (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
