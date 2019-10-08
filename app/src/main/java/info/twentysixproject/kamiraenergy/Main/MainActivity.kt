@@ -2,14 +2,17 @@ package info.twentysixproject.kamiraenergy.Main
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.res.Resources
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -23,9 +26,11 @@ import com.google.firebase.firestore.SetOptions
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
+import info.twentysixproject.kamiraenergy.Main.Capturebottle.CapturebottleActivity
 import info.twentysixproject.kamiraenergy.Main.Fragments.HomeFragment
 import info.twentysixproject.kamiraenergy.Main.Fragments.ProfileFragment
 import info.twentysixproject.kamiraenergy.R
+import info.twentysixproject.kamiraenergy.utils.CustomTabHelper
 
 class MainActivity : AppCompatActivity(),
     HomeFragment.OnFragmentInteractionForHome,
@@ -161,6 +166,7 @@ class MainActivity : AppCompatActivity(),
             })
     }
 
+    //======First sign configuration=====//
     private fun adminConfiguration(text: String): Task<String> {
         // Create the arguments to the callable function.
         val data = hashMapOf(
@@ -180,23 +186,10 @@ class MainActivity : AppCompatActivity(),
             }
     }
 
-    fun firstTimeLogin(): Boolean{
-        val mSettings: SharedPreferences = getSharedPreferences("Settings",PRIVATE_MODE);
-        val firstTimeFlag = mSettings.getBoolean("firstTimeFlag", true)
-
-        if(firstTimeFlag){
-            return true
-        }
-        val editor: SharedPreferences.Editor  = mSettings.edit()
-        editor.putBoolean("firstTimeFlag", false)
-        editor.apply()
-
-        return false
-    }
-
     companion object {
         private const val TAG = "MainActivity"
         private val REQUEST_PERMISSIONS_REQUEST_CODE = 34
+        private const val PRIVACY_POLICY = "https://www.kamira.energy/privacy-policy.html"
     }
 
     override fun openGmaps() {
@@ -210,6 +203,65 @@ class MainActivity : AppCompatActivity(),
     override fun logout() {
         auth.signOut()
         finish()
+    }
+
+    private var customTabHelper: CustomTabHelper = CustomTabHelper()
+    override fun openPolicyPrivacy() {
+        val builder = CustomTabsIntent.Builder()
+
+        // modify toolbar color
+        builder.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
+
+        // add share button to overflow menu
+        builder.addDefaultShareMenuItem()
+
+        val anotherCustomTab = CustomTabsIntent.Builder().build()
+
+        val requestCode = 100
+        val intent = anotherCustomTab.intent
+        intent.setData(Uri.parse(PRIVACY_POLICY))
+
+        val pendingIntent = PendingIntent.getActivity(this@MainActivity,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT)
+
+        // add menu item to oveflow
+        builder.addMenuItem("Sample item", pendingIntent)
+
+        // menu item icon
+        // val bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher)
+        // builder.setActionButton(bitmap, "Android", pendingIntent, true)
+
+        // modify back button icon
+        // builder.setCloseButtonIcon(bitmap)
+
+        // show website title
+        builder.setShowTitle(true)
+
+        // animation for enter and exit of tab
+        builder.setStartAnimations(this@MainActivity, android.R.anim.fade_in, android.R.anim.fade_out)
+        builder.setExitAnimations(this@MainActivity, android.R.anim.fade_in, android.R.anim.fade_out)
+
+        val customTabsIntent = builder.build()
+
+        // check is chrom available
+        val packageName = customTabHelper.getPackageNameToUse(this@MainActivity, PRIVACY_POLICY)
+
+        if (packageName == null) {
+            // if chrome not available open in web view
+            //val intentOpenUri = Intent(this, WebViewActivity::class.java)
+            //intentOpenUri.putExtra(WebViewActivity.EXTRA_URL, Uri.parse(PRIVACY_POLICY).toString())
+            //startActivity(intentOpenUri)
+        } else {
+            customTabsIntent.intent.setPackage(packageName)
+            customTabsIntent.launchUrl(this@MainActivity, Uri.parse(PRIVACY_POLICY))
+        }
+    }
+
+    override fun captureBottle(){
+        val intent = Intent(this, CapturebottleActivity::class.java)
+        startActivity(intent)
     }
 
 }

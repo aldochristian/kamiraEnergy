@@ -257,12 +257,13 @@
     <string name="collector_name">Pending on collector pool</string>
 
     <!-- About and versioning -->
-    <string name="version">Alpha 0.0.2</string>
+    <string name="version">Alpha 0.1.2</string>
     <string name="last_update">September 2019</string>
     <string name="landing_page">https://www.kamira.energy</string>
     <string name="contact_email">email : info@kamira.energy</string>
     <string name="address">Address : Jl. Sam Ratulangi No. 458,\nHotel Gran Puri Lt. 3 \nCo-Working space : Sarang Inovasi \nManado - Sulawesi Utara</string>
     <string name="title_activity_reward">RewardActivity</string>
+    <string name="title_activity_capturebottle">CapturebottleActivity</string>
 
 
 </resources>

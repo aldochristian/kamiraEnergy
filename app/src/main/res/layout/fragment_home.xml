@@ -102,12 +102,12 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:id="@+id/frhome_fieldrewards">
+                            android:id="@+id/frhome_fieldcapture">
 
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Points"
+                                android:text="Capture"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                                 android:textColor="@android:color/white"
                                 app:fontFamily="sans-serif-medium" />
@@ -117,8 +117,7 @@
                                 android:layout_height="@dimen/spacing_xmlarge"
                                 android:layout_marginTop="@dimen/spacing_small"
                                 android:tint="@android:color/white"
-                                app:srcCompat="@drawable/ic_redeem_white_24dp"
-                                android:id="@+id/home_btnredeem" />
+                                app:srcCompat="@drawable/ic_camera_alt_black_24dp" />
 
                     </LinearLayout>
 
@@ -150,7 +149,6 @@
 
 
                     <LinearLayout
-                            android:visibility="invisible"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -159,17 +157,17 @@
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Transfer"
+                                android:text="Dropbox"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                                android:textColor="@android:color/white"
+                                android:textColor="@color/grey_20"
                                 app:fontFamily="sans-serif-medium" />
 
                         <ImageView
+                                android:src="@drawable/ic_location_on_black_24dp"
                                 android:layout_width="@dimen/spacing_xmlarge"
                                 android:layout_height="@dimen/spacing_xmlarge"
                                 android:layout_marginTop="@dimen/spacing_small"
-                                android:rotation="180"
-                                android:tint="@android:color/white" />
+                                android:tint="@color/grey_20" />
 
                     </LinearLayout>
 

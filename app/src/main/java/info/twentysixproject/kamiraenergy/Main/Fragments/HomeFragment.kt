@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
         binding.model = viewModel
 
         viewModel.myPoints.observe(this, Observer<String> {
-            binding.frhomePointdet.text = "We give you "+it+" points"
+            binding.frhomePointdet.text = "We gave you "+it+" points"
         })
         viewModel.myContribution.observe(this, Observer<String> {
             binding.frhomeContributiondet.text = "You contributed with save "+it+" Ltr plastic"
@@ -55,9 +55,10 @@ class HomeFragment : Fragment() {
         binding.frhomeFieldgarbage.setOnClickListener {
             forHome?.openGmaps()
         }
-        binding.frhomeFieldrewards.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.hometopointsfr_action, null)
-        )
+        binding.frhomeFieldcapture.setOnClickListener {
+            //Navigation.createNavigateOnClickListener(R.id.hometopointsfr_action, null)
+            forHome?.captureBottle()
+        }
         binding.frhomeRedeem.setOnClickListener {
             showRedeemDialog()
         }
@@ -182,6 +183,7 @@ class HomeFragment : Fragment() {
 
     interface OnFragmentInteractionForHome {
         fun openGmaps()
+        fun captureBottle()
     }
 
     fun showSnackbar(message: String) {

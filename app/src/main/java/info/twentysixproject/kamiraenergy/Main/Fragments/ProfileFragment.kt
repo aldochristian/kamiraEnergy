@@ -2,27 +2,23 @@ package info.twentysixproject.kamiraenergy.Main.Fragments
 
 
 import android.app.AlertDialog
+import android.app.PendingIntent
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
 import info.twentysixproject.kamiraenergy.R
+import info.twentysixproject.kamiraenergy.utils.CustomTabHelper
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class ProfileFragment : Fragment() {
 
     internal var forProfile: OnFragmentInteractionForProfile? = null
@@ -63,9 +59,9 @@ class ProfileFragment : Fragment() {
             Navigation.createNavigateOnClickListener(R.id.profiletotermsfragment_action, null)
         )*/
 
-        view.findViewById<LinearLayout>(R.id.prof_privacy)?.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.profiletoprivacyfragment_action, null)
-        )
+        view.findViewById<LinearLayout>(R.id.prof_privacy)?.setOnClickListener{
+            forProfile?.openPolicyPrivacy()
+        }
     }
 
     override fun onAttach(context: Context)
@@ -83,6 +79,7 @@ class ProfileFragment : Fragment() {
 
     interface OnFragmentInteractionForProfile {
         fun logout()
+        fun openPolicyPrivacy()
     }
 
 }

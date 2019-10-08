@@ -158,20 +158,74 @@ exports.inboxNotif = functions.firestore.document('users/{usersUid}/inbox/{inbox
 });
 
 exports.createUser = functions.https.onCall((data, context) => {
-  // ...
+  /*
+   * On boarding function, only run if user first time login
+   * This is will set up limited access to client, prevent request booming
+   */
   const newValue = data.text;
   const idUser = context.auth.uid;
   console.log("my id ",idUser);
 
-      let dataUser = {
+      let dataAdminRequest = {
         banned: false,
         counter: 0.00
       };
       
-      // Add a new document in collection "cities" with ID 'LA'
-      //let setDoc = db.collection('users').doc(idUser).collection("adminSet").document("counterRequest").set(dataUser)
-      let dbAdmin = db.collection('users').doc(idUser).collection("adminSet").doc("counterRequest");
+      let dbAdminRequest = db.collection('users').doc(idUser).collection("adminSet").doc("counterRequest");
+      dbAdminRequest.set(dataAdminRequest, {merge: true});
 
-      return dbAdmin
-        .set(dataUser, {merge: true});
+      let dataAdminCapture = {
+        banned: false,
+        counter: 0.00
+      }
+
+      let dbAdminCapture = db.collection('users').doc(idUser).collection("adminSet").doc("counterCapture");
+
+      return dbAdminCapture
+        .set(dataAdminCapture, {merge: true});
+});
+
+exports.writePointsFromCapture = functions.firestore.document('capture/{captureUid}')
+  .onUpdate(async(change, context) =>{
+
+    console.log('running writePointFromCapture');
+    
+    const newValue = change.after.data();
+    const previousValue = change.before.data();
+
+    const captureId = context.params.captureUid
+    const userId = newValue.user;
+    const countBottle = newValue.countBottle;
+    const statusChange = newValue.status; // Status Review to approved
+    const pointAfterCount = countBottle * 100.0
+    let FieldValue = require('firebase-admin').firestore.FieldValue;
+
+    if(statusChange === 'approved'){
+      console.log('Your image has approved ', captureId);
+      let data = {
+        gaveBy: 'CaptureBottleBot',
+        pointAmount: pointAfterCount,
+        createdDate: FieldValue.serverTimestamp()
+      };
+  
+      let setDoc = db.collection('users').doc(userId).collection('pointlog').doc(captureId).set(data);
+      let userRef = db.collection('users').doc(userId)
+  
+      let transactionPoint = db.runTransaction(t => {
+          return t.get(userRef)
+              .then(doc => {
+                let newPoints = doc.data().point + pointAfterCount;
+                t.update(userRef, {point: 400});
+                console.log('Point amount ', newPoints);
+                return transactionPoint;
+              });
+          }).then(result => {
+            console.log('Transaction success!');
+            return transactionPoint;
+          }).catch(err => {
+            console.log('Transaction failure:', err);
+          }); 
+    }else{
+      return error
+    }
 });
