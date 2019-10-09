@@ -8,7 +8,6 @@ import android.content.res.Resources
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
@@ -56,7 +55,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onOptionsItemSelected(menuItem : MenuItem?) : Boolean {
-        if (menuItem?.getItemId() == android.R.id.home) {
+        if (menuItem?.itemId == android.R.id.home) {
             onBackPressedDispatcher.onBackPressed()
         }
         return super.onOptionsItemSelected(menuItem)
@@ -84,9 +83,9 @@ class MainActivity : AppCompatActivity(),
 
         FirebaseMessaging.getInstance().subscribeToTopic(getString(R.string.promotion_notification_channel_name))
             .addOnCompleteListener { task ->
-                var msg = getString(R.string.msg_subscribed)
+                //var msg = getString(R.string.msg_subscribed)
                 if (!task.isSuccessful) {
-                    msg = getString(R.string.msg_subscribe_failed)
+                    //msg = getString(R.string.msg_subscribe_failed)
                 }
                 //Log.d(TAG, msg)
                 //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
@@ -99,7 +98,7 @@ class MainActivity : AppCompatActivity(),
 
         setupBottomNavMenu(navController) //Bottom Module
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            val dest: String = try {
+            try {
                 resources.getResourceName(destination.id)
             } catch (e: Resources.NotFoundException) {
                 Integer.toString(destination.id)
@@ -115,10 +114,7 @@ class MainActivity : AppCompatActivity(),
 
         // FCM : Handle possible data accompanying notification message.
         intent.extras?.let {
-            for (key in it.keySet()) {
-                val value = intent.extras?.get(key)
-                Log.d(TAG, "Key: $key Value: $value")
-            }
+            //for (key in it.keySet()) { }
         }// FCM End
     }
 
@@ -135,12 +131,10 @@ class MainActivity : AppCompatActivity(),
         FirebaseInstanceId.getInstance().instanceId
             .addOnCompleteListener(OnCompleteListener { task ->
                 if (!task.isSuccessful) {
-                    Log.w(TAG, "getInstanceId failed", task.exception)
                     return@OnCompleteListener
                 }
                 // Get new Instance ID token
                 val token = task.result?.token
-                Log.d(TAG, token)
 
                 // Stored token
                 val checkDoc = db.collection("users").document(userUid!!)
@@ -153,14 +147,13 @@ class MainActivity : AppCompatActivity(),
                             "fcmToken" to token,
                             "point" to 0.00,
                             "contribution" to 0.00)
-                        db.collection("users").document(userUid!!)
+                        db.collection("users").document(userUid)
                             .set(data, SetOptions.merge())
                             .addOnSuccessListener {
                                 adminConfiguration("test")
-                                Log.d(TAG, "Success stored FCM token")
                             }
                             .addOnFailureListener {
-                                Log.d(TAG, "Fail to store FCM token "+it) }
+                            }
                     }
 
             })
@@ -219,7 +212,7 @@ class MainActivity : AppCompatActivity(),
 
         val requestCode = 100
         val intent = anotherCustomTab.intent
-        intent.setData(Uri.parse(PRIVACY_POLICY))
+        intent.data = Uri.parse(PRIVACY_POLICY)
 
         val pendingIntent = PendingIntent.getActivity(this@MainActivity,
             requestCode,

@@ -11,7 +11,7 @@ import info.twentysixproject.kamiraenergy.dataclass.Rewards
 class RewardsCatalogAdapter(var clickListener: RewardsCatalogListener) : ListAdapter<Rewards, RewardsCatalogAdapter.ViewHolder>(RewardsCatalogDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position)!!, clickListener)
+        //holder.bind(getItem(position)!!, clickListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,7 +20,8 @@ class RewardsCatalogAdapter(var clickListener: RewardsCatalogListener) : ListAda
 
     class ViewHolder private constructor(val binding: ItemsCatalogRewardsBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Rewards, clickListener: RewardsCatalogListener) {
+        // item: Rewards, clickListener: RewardsCatalogListener
+        fun bind() {
             //binding.inbox = item
             //binding.clickListener = clickListener
             binding.executePendingBindings()

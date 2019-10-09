@@ -1,14 +1,10 @@
 package info.twentysixproject.kamiraenergy
 
 
-import android.content.Context
-import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -109,7 +105,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
 
         // Enable the zoom controls for the map
-        mMap.uiSettings.isZoomControlsEnabled()
+        mMap.uiSettings.isZoomControlsEnabled
         // Prompt the user for permission.
         // getLocationPermission();
 

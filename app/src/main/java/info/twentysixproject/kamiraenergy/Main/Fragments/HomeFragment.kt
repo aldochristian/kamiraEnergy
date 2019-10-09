@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
             showRedeemDialog()
         }
 
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
         return binding.root
     }
 
@@ -108,7 +108,7 @@ class HomeFragment : Fragment() {
         val inputMessage = "aku Sehat Selalu"
 
         if (TextUtils.isEmpty(inputMessage)) {
-            showSnackbar("Please enter a message.")
+            //showSnackbar("Please enter a message.")
             return
         }
 
@@ -118,13 +118,10 @@ class HomeFragment : Fragment() {
                 if (!task.isSuccessful) {
                     val e = task.exception
                     if (e is FirebaseFunctionsException) {
-                        val code = e.code
-                        val details = e.details
                     }
 
                     // [START_EXCLUDE]
-                    Log.w(TAG, "addMessage:onFailure", e)
-                    showSnackbar("An error occurred.")
+                    //showSnackbar("An error occurred.")
                     return@OnCompleteListener
                     // [END_EXCLUDE]
                 }
@@ -158,20 +155,20 @@ class HomeFragment : Fragment() {
         dialog.setCancelable(true)
 
         val lp =  WindowManager.LayoutParams()
-        lp.copyFrom(dialog.window.attributes)
+        lp.copyFrom(dialog.window?.attributes)
         lp.width = WindowManager.LayoutParams.MATCH_PARENT
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT
 
         dialog.findViewById<Button>(R.id.dialog_redeembtn).setOnClickListener {
             val code: String = dialog.findViewById<EditText>(R.id.dialog_redeeminput).text.toString()
             if(code.isEmpty()){
-                dialog.findViewById<TextView>(R.id.dialog_errortx).setText("Empty Code, please enter the code")
+                dialog.findViewById<TextView>(R.id.dialog_errortx).text = "Empty Code, please enter the code"
             }else{
                 var codeFounded = viewModel.activatedCode(code)
                 if(codeFounded) {
                     dialog.dismiss()
                 }else{
-                    dialog.findViewById<TextView>(R.id.dialog_errortx).setText("Invalid/expired code, please enter new one or correction")
+                    dialog.findViewById<TextView>(R.id.dialog_errortx).text = "Invalid/expired code, please enter new one or correction"
                 }
             }
         }
@@ -186,7 +183,7 @@ class HomeFragment : Fragment() {
         fun captureBottle()
     }
 
-    fun showSnackbar(message: String) {
+    fun showSnackbar() {
         //Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show()
     }
 

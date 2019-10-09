@@ -1,7 +1,5 @@
 package info.twentysixproject.kamiraenergy.viewmodel
 
-
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +9,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.google.firebase.storage.FirebaseStorage
 import info.twentysixproject.kamiraenergy.dataclass.Orders
 import info.twentysixproject.kamiraenergy.utils.Utils
 
@@ -66,7 +63,6 @@ class OngoingOrderViewModel : ViewModel() {
                 fetchFirestore()
             }
         }else{
-            Log.d(TAG, "Error to cancel")
         }
 
     }
@@ -96,8 +92,7 @@ class OngoingOrderViewModel : ViewModel() {
                 }
                 onGoingOrderList.value = orderList
             }
-            .addOnFailureListener{ exception ->
-                Log.w(TAG, "Error getting documents: ", exception)
+            .addOnFailureListener{ _ ->
             }
 
     }

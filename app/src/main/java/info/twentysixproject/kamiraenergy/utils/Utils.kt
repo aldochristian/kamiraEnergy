@@ -2,7 +2,6 @@ package info.twentysixproject.kamiraenergy.utils
 
 import android.app.Dialog
 import android.content.Context
-import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
@@ -22,7 +21,6 @@ object Utils {
         val sdf = SimpleDateFormat("dd MMM yyyy HH:mm", Locale.ENGLISH)
         val netDate = Date(milliseconds)
         val date = sdf.format(netDate).toString()
-        Log.d("Utils", date)
         return date
     }
 

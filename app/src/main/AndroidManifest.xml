@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         package="info.twentysixproject.kamiraenergy">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -21,16 +22,17 @@
             android:required="true" />
 
     <application
-            android:allowBackup="true"
             android:icon="@mipmap/ic_launcher_kamira"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
                 android:name=".Main.Capturebottle.CapturebottleActivity"
                 android:label="@string/title_activity_capturebottle"
-                android:theme="@style/AppTheme.NoActionBar"></activity>
+                android:theme="@style/AppTheme.NoActionBar"
+                tools:ignore="InnerclassSeparator" />
         <activity
                 android:name=".points.RewardActivity"
                 android:label="@string/title_activity_reward"
@@ -68,7 +70,8 @@
                 android:name=".Authentication.SplashActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
                 android:label="@string/app_name"
-                android:theme="@style/FullscreenTheme">
+                android:theme="@style/FullscreenTheme"
+                tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -77,15 +80,18 @@
         </activity>
         <activity
                 android:name=".Main.MapsActivityJava"
-                android:label="@string/title_activity_maps_java" />
+                android:label="@string/title_activity_maps_java"
+                tools:ignore="InnerclassSeparator" />
         <activity
                 android:name=".PickupGarbageFragment"
                 android:label="Pickup" />
         <activity
                 android:name=".MapsActivity"
                 android:label="@string/title_activity_maps" />
-        <activity android:name=".Authentication.PhoneAuthActivity" />
-        <activity android:name=".Authentication.LoginActivity" />
+        <activity android:name=".Authentication.PhoneAuthActivity"
+                tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Authentication.LoginActivity"
+                tools:ignore="InnerclassSeparator" />
         <activity
                 android:name=".utils.FirebaseUIActivity"
                 android:label="@string/title_activity_firebase_ui"
@@ -108,7 +114,8 @@
         <meta-data
                 android:name="com.google.firebase.messaging.default_notification_channel_id"
                 android:value="@string/default_notification_channel_id" /> <!-- [END fcm_default_channel] -->
-        <activity android:name=".Main.MainActivity" />
+        <activity android:name=".Main.MainActivity"
+                tools:ignore="InnerclassSeparator" />
 
         <service
                 android:name=".utils.MyFirebaseMessagingService"

@@ -1,7 +1,5 @@
 package info.twentysixproject.kamiraenergy.viewmodel
 
-import android.util.Log
-import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -67,8 +65,7 @@ class EditprofileViewModel : ViewModel() {
                     //Log.d(TAG, "No such document")
                 }
             }
-            .addOnFailureListener { exception ->
-                //Log.d(TAG, "get failed with ", exception)
+            .addOnFailureListener {
             }
         phone.value = "You had registered with number "+user.phoneNumber
         _hasLoaded.value = true

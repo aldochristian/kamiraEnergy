@@ -1,6 +1,5 @@
 package info.twentysixproject.kamiraenergy.Main.Fragments
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,19 +9,10 @@ import com.google.android.material.tabs.TabLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.*
+import androidx.fragment.app.FragmentStatePagerAdapter
 import info.twentysixproject.kamiraenergy.R
 import kotlinx.android.synthetic.main.fragment_order.*
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class OrderFragment : Fragment() {
 
     val TAG:String = "OrderFragment"
@@ -56,6 +46,7 @@ class OrderFragment : Fragment() {
         viewPager.adapter = adapter
     }
 
+    @Suppress("DEPRECATION")
     internal inner class ViewPagerAdapter(manager: FragmentManager) : FragmentStatePagerAdapter(manager) {
         private val mFragmentList = ArrayList<Fragment>()
         private val mFragmentTitleList = ArrayList<String>()

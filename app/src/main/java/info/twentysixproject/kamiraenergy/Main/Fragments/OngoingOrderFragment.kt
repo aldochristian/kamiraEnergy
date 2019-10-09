@@ -57,7 +57,7 @@ class OngoingOrderFragment : Fragment() {
             }
         })
 
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
         return binding.root
     }
@@ -68,7 +68,7 @@ class OngoingOrderFragment : Fragment() {
         builder.setMessage("Are you sure for cancellation ?")
         builder.setPositiveButton(
             R.string.OK,
-            DialogInterface.OnClickListener { dialogInterface, i ->
+            DialogInterface.OnClickListener { _, _ ->
                 Log.d(TAG, "Here we are fo cancel "+id)
                 viewModel.updateToCancel(id)
             })

@@ -5,5 +5,5 @@ data class Rewards(
     val img: String?,
     val dateCreated: String,
     val header: String,
-    val points: Integer
+    val points: Int
 )

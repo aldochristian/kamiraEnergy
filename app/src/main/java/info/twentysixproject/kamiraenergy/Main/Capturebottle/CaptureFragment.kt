@@ -14,7 +14,6 @@ import android.os.Build
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
@@ -41,8 +40,6 @@ import java.io.FileNotFoundException
 import java.io.InputStream
 
 class CaptureFragment : Fragment() {
-
-    private val TAG: String = "CaptureFragment"
 
     private val GALLERY = 1
     private val CAMERA = 2
@@ -127,7 +124,7 @@ class CaptureFragment : Fragment() {
             bitmap = (binding.captImg.drawable as BitmapDrawable).bitmap
         })
 
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
         return binding.root
     }
 
@@ -136,7 +133,7 @@ class CaptureFragment : Fragment() {
         pictureDialog.setTitle("Select Action")
         val pictureDialogItems = arrayOf("Select photo from gallery", "Capture photo from camera")
         pictureDialog.setItems(pictureDialogItems
-        ) { dialog, which ->
+        ) { _, which ->
             when (which) {
                 0 -> choosePhotoFromGallary()
                 1 -> opencamera()
@@ -146,7 +143,7 @@ class CaptureFragment : Fragment() {
     }
 
     fun choosePhotoFromGallary() {
-        val pickPhoto = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        val pickPhoto = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(pickPhoto, GALLERY)
     }
 
@@ -189,11 +186,9 @@ class CaptureFragment : Fragment() {
         val uploadTask = myBucket.putBytes(data)
         uploadTask.addOnFailureListener {
             // Handle unsuccessful uploads
-            Log.d(TAG, "fail to upload")
         }.addOnSuccessListener {
             // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
             successStored = true
-            Log.d(TAG, "success to upload")
         }
         return successStored
     }
@@ -227,12 +222,11 @@ class CaptureFragment : Fragment() {
             if (data != null)
             {
                 val thumbnail = data.data
-                viewModel.setImageUri(thumbnail)//imageview?.setImageURI(thumbnail)
-                Log.d(TAG, "(1) Initiate image to thumb "+thumbnail);
+                viewModel.setImageUri(thumbnail!!)//imageview?.setImageURI(thumbnail)
                 try {
-                    val imageStream: InputStream? = requireContext().contentResolver.openInputStream(thumbnail!!)
-                    var selectedImageAfter: Bitmap = BitmapFactory.decodeStream(imageStream)
-                    selectedImageAfter = getResizedBitmap(selectedImageAfter, 400)
+                    val imageStream: InputStream? = requireContext().contentResolver.openInputStream(thumbnail)
+                    val selectedImageAfter: Bitmap = BitmapFactory.decodeStream(imageStream)
+                    getResizedBitmap(selectedImageAfter, 400)
                     //imageview?.setImageBitmap(selectedImageAfter)
                 }catch (e: FileNotFoundException){
                     e.printStackTrace()
@@ -244,10 +238,7 @@ class CaptureFragment : Fragment() {
         {
             if(resultCode == Activity.RESULT_OK){
                 try {
-                    val thumbnail = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imageUri)
                     viewModel.setImageUri(imageUri!!) //imageview?.setImageURI(imageUri)
-                    //val selectedImageAfter = getResizedBitmap(thumbnail, 400)
-                    //saveImage(selectedImageAfter)
                 }catch (e: Exception){
                     e.printStackTrace()
                 }

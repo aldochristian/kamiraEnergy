@@ -24,13 +24,13 @@ class RoundedTransformation @JvmOverloads constructor(radius:Int, margin:Int, co
     }
 
     override fun transform(source:Bitmap): Bitmap {
-        val width = source.getWidth()
-        val height = source.getHeight()
+        val width = source.width
+        val height = source.height
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         val paint = Paint()
-        paint.setAntiAlias(true)
-        paint.setShader(BitmapShader(source, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP))
+        paint.isAntiAlias = true
+        paint.shader = BitmapShader(source, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
         drawRoundRect(canvas, paint, width.toFloat(), height.toFloat())
         source.recycle()
         return bitmap
@@ -39,22 +39,21 @@ class RoundedTransformation @JvmOverloads constructor(radius:Int, margin:Int, co
         val right = width - mMargin
         val bottom = height - mMargin
         when (mCornerType) {
-            RoundedTransformation.CornerType.ALL -> canvas.drawRoundRect(RectF(mMargin, mMargin, right, bottom), mRadius, mRadius, paint)
-            RoundedTransformation.CornerType.TOP_LEFT -> drawTopLeftRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.TOP_RIGHT -> drawTopRightRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.BOTTOM_LEFT -> drawBottomLeftRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.BOTTOM_RIGHT -> drawBottomRightRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.TOP -> drawTopRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.BOTTOM -> drawBottomRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.LEFT -> drawLeftRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.RIGHT -> drawRightRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.OTHER_TOP_LEFT -> drawOtherTopLeftRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.OTHER_TOP_RIGHT -> drawOtherTopRightRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.OTHER_BOTTOM_LEFT -> drawOtherBottomLeftRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.OTHER_BOTTOM_RIGHT -> drawOtherBottomRightRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.DIAGONAL_FROM_TOP_LEFT -> drawDiagonalFromTopLeftRoundRect(canvas, paint, right, bottom)
-            RoundedTransformation.CornerType.DIAGONAL_FROM_TOP_RIGHT -> drawDiagonalFromTopRightRoundRect(canvas, paint, right, bottom)
-            else -> canvas.drawRoundRect(RectF(mMargin, mMargin, right, bottom), mRadius, mRadius, paint)
+            CornerType.ALL -> canvas.drawRoundRect(RectF(mMargin, mMargin, right, bottom), mRadius, mRadius, paint)
+            CornerType.TOP_LEFT -> drawTopLeftRoundRect(canvas, paint, right, bottom)
+            CornerType.TOP_RIGHT -> drawTopRightRoundRect(canvas, paint, right, bottom)
+            CornerType.BOTTOM_LEFT -> drawBottomLeftRoundRect(canvas, paint, right, bottom)
+            CornerType.BOTTOM_RIGHT -> drawBottomRightRoundRect(canvas, paint, right, bottom)
+            CornerType.TOP -> drawTopRoundRect(canvas, paint, right, bottom)
+            CornerType.BOTTOM -> drawBottomRoundRect(canvas, paint, right, bottom)
+            CornerType.LEFT -> drawLeftRoundRect(canvas, paint, right, bottom)
+            CornerType.RIGHT -> drawRightRoundRect(canvas, paint, right, bottom)
+            CornerType.OTHER_TOP_LEFT -> drawOtherTopLeftRoundRect(canvas, paint, right, bottom)
+            CornerType.OTHER_TOP_RIGHT -> drawOtherTopRightRoundRect(canvas, paint, right, bottom)
+            CornerType.OTHER_BOTTOM_LEFT -> drawOtherBottomLeftRoundRect(canvas, paint, right, bottom)
+            CornerType.OTHER_BOTTOM_RIGHT -> drawOtherBottomRightRoundRect(canvas, paint, right, bottom)
+            CornerType.DIAGONAL_FROM_TOP_LEFT -> drawDiagonalFromTopLeftRoundRect(canvas, paint, right, bottom)
+            CornerType.DIAGONAL_FROM_TOP_RIGHT -> drawDiagonalFromTopRightRoundRect(canvas, paint, right, bottom)
         }
     }
     private fun drawTopLeftRoundRect(canvas:Canvas, paint:Paint, right:Float, bottom:Float) {

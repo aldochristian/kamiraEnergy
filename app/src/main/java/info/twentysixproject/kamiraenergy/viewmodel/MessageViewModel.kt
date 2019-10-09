@@ -41,7 +41,7 @@ class MessageViewModel : ViewModel(){
                 }
                 messageList.value = inboxList
             }
-            .addOnFailureListener{ exception ->
+            .addOnFailureListener{ _ ->
                 //Log.w(TAG, "Error getting documents: ", exception)
             }
     }

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
@@ -59,7 +58,6 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
                 // 2 - Auto-retrieval. On some devices Google Play services can automatically
                 //     detect the incoming verification SMS and perform verification without
                 //     user action.
-                Log.d(TAG, "onVerificationCompleted:$credential")
                 // [START_EXCLUDE silent]
                 verificationInProgress = false
                 // [END_EXCLUDE]
@@ -74,7 +72,6 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
             override fun onVerificationFailed(e: FirebaseException) {
                 // This callback is invoked in an invalid request for verification is made,
                 // for instance if the the phone number format is not valid.
-                Log.w(TAG, "onVerificationFailed", e)
                 // [START_EXCLUDE silent]
                 verificationInProgress = false
                 // [END_EXCLUDE]
@@ -105,7 +102,6 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
                 // The SMS verification code has been sent to the provided phone number, we
                 // now need to ask the user to enter the code and then construct a credential
                 // by combining the code with a verification ID.
-                Log.d(TAG, "onCodeSent:$verificationId")
 
                 // Save verification ID and resending token so we can use them latevr
                 storedVerificationId = verificationId
@@ -187,16 +183,13 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithCredential:success")
 
                     val user = task.result?.user
                     // [START_EXCLUDE]
-                    Log.d(TAG, "My UID from signInWithCredential ")
                     updateUI(STATE_SIGNIN_SUCCESS, user)
                     // [END_EXCLUDE]
                 } else {
                     // Sign in failed, display a message and update the UI
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         // The verification code entered was invalid
                         // [START_EXCLUDE silent]
@@ -265,10 +258,10 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 //directToMain()
             }
-            STATE_SIGNIN_FAILED ->
+            /*STATE_SIGNIN_FAILED ->
                 // No-op, handled by sign-in check
                 //detail.setText(R.string.status_sign_in_failed)
-                Log.d(TAG, "Signin failed")
+                Log.d(TAG, "Signin failed")*/
             STATE_SIGNIN_SUCCESS -> {
                 directToMain()
             }

@@ -24,6 +24,7 @@
             android:background="@color/kamira_major"
             app:itemIconTint="@color/white"
             app:itemTextColor="@color/white"
+            app:labelVisibilityMode="labeled"
             app:menu="@menu/menu_bottom_main" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

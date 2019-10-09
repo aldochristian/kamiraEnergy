@@ -1,6 +1,5 @@
 package info.twentysixproject.kamiraenergy.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -49,8 +48,7 @@ class CompletedOrderViewModel : ViewModel() {
                 }
                 completeOrderList.value = orderList
             }
-            .addOnFailureListener{ exception ->
-                //Log.w(TAG, "Error getting documents: ", exception)
+            .addOnFailureListener{
             }
 
     }

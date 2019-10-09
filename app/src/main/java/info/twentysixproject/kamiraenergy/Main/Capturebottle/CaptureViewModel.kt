@@ -1,7 +1,6 @@
 package info.twentysixproject.kamiraenergy.Main.Capturebottle
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +9,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 class CaptureViewModel : ViewModel() {
 
     val db = FirebaseFirestore.getInstance()
-    val TAG: String = "CaptureViewModel"
 
     val SUCCESS:Int = 1
     val FAIL:Int = 0
@@ -25,7 +23,6 @@ class CaptureViewModel : ViewModel() {
         get() = _successUpload
 
     fun successUploaded(){
-        Log.d(TAG, "Not yet stored")
         _successUpload.value = NOT_YET_STORED
     }
 
@@ -37,6 +34,7 @@ class CaptureViewModel : ViewModel() {
         val ref = db.collection("capture").document()
 
         val data = hashMapOf(
+            "counterBottle" to 0.00,
             "location" to "",
             "status" to "review",
             "user" to userId
@@ -46,7 +44,6 @@ class CaptureViewModel : ViewModel() {
             .addOnSuccessListener {
                 incrementCounter(userId)
             }.addOnFailureListener{
-                Log.d(TAG, "Show error "+it.printStackTrace())
                 _successUpload.value = FAIL
                 return@addOnFailureListener
             }
@@ -69,12 +66,8 @@ class CaptureViewModel : ViewModel() {
             null
         }.addOnSuccessListener {
             _successUpload.value = SUCCESS
-            Log.d(TAG, "Transaction success!")
-        }.addOnFailureListener { e ->
+        }.addOnFailureListener { _ ->
             _successUpload.value = FAIL
-            Log.w(TAG, "Transaction failure.", e)
         }
     }
-
-    fun writeMessage(){}
 }

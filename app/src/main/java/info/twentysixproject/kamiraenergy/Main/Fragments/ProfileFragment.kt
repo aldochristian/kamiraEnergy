@@ -40,7 +40,7 @@ class ProfileFragment : Fragment() {
             builder.setTitle("Logout ?")
             builder.setMessage("You are going to logout and exit the apps")
             builder.setPositiveButton("Okay",
-                DialogInterface.OnClickListener { dialogInterface, i ->
+                DialogInterface.OnClickListener { _, _ ->
                     forProfile?.logout()
                 })
             builder.setNegativeButton("Discard", null)

@@ -1,9 +1,6 @@
 package info.twentysixproject.kamiraenergy.Main.Dialogs;
 
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,13 +8,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 
 import info.twentysixproject.kamiraenergy.R;
 
@@ -53,8 +46,6 @@ public class DialogCollectorFragment extends DialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Log.d("API123", "onCreate");
 
         boolean setFullScreen = true;
         if (getArguments() != null) {

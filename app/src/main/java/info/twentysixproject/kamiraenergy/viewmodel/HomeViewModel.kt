@@ -1,33 +1,22 @@
 package info.twentysixproject.kamiraenergy.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import info.twentysixproject.kamiraenergy.model.SlideModel
-import androidx.databinding.adapters.NumberPickerBindingAdapter.setValue
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import androidx.lifecycle.LiveData
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.SetOptions
-import com.google.firebase.iid.FirebaseInstanceId
-import info.twentysixproject.kamiraenergy.dataclass.PromoBanner
 import info.twentysixproject.kamiraenergy.utils.Utils
 
 
 class HomeViewModel: ViewModel(){
 
     private lateinit var promoReference: DatabaseReference
-
-    val TAG: String = "HomeViewModel"
     val storage = FirebaseStorage.getInstance("gs://twentysixproject-a4530")
     val db = FirebaseFirestore.getInstance()
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -80,7 +69,7 @@ class HomeViewModel: ViewModel(){
         db.runTransaction {
             val snapshot = it.get(redeemCodeDoc)
             val activatedBy = snapshot.get("activatedBy").toString()
-            val contribution = snapshot.get("contribution") as Double
+            //val contribution = snapshot.get("contribution") as Double
             pointToBeAdded = snapshot.get("pointcount") as Double
             if (activatedBy == "blank") {
                 it.update(redeemCodeDoc, "activatedBy", user?.uid)
@@ -91,11 +80,9 @@ class HomeViewModel: ViewModel(){
                 )
             }
         }.addOnSuccessListener {
-            Log.d(TAG, "Transaction success : $it")
             givePointsandCode(code, pointToBeAdded, contribution)
             codeFoundStatus = true
         }.addOnFailureListener {
-            Log.w(TAG, "Transaction failure", it)
             codeFoundStatus = false
         }
 
@@ -114,11 +101,10 @@ class HomeViewModel: ViewModel(){
         db.collection("users").document(user!!.uid)
             .collection("pointHistory")
             .add(data)
-            .addOnSuccessListener { documentReference ->
+            .addOnSuccessListener { _ ->
                 transactionPointContribution(points, contribution)
             }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
+            .addOnFailureListener { _ ->
             }
     }
 
@@ -135,8 +121,8 @@ class HomeViewModel: ViewModel(){
             transaction.update(sfDocRef, "contribution", newContribution)
 
             null
-        }.addOnSuccessListener { Log.d(TAG, "Transaction success!") }
-            .addOnFailureListener { e -> Log.w(TAG, "Transaction failure.", e) }
+        }.addOnSuccessListener {  }
+            .addOnFailureListener { _ ->  }
 
     }
 
@@ -151,8 +137,8 @@ class HomeViewModel: ViewModel(){
 
         db.collection("users").document("inbox")
             .set(msg)
-            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+            .addOnSuccessListener {  }
+            .addOnFailureListener { _ ->  }
     }
 
     fun limitedOrder(){

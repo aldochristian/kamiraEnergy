@@ -7,7 +7,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -127,11 +126,11 @@ public class MapsActivityJava extends FragmentActivity implements OnMapReadyCall
             }
         });
 
-        notes = (TextView) findViewById(R.id.maps_inputnotes);
+        notes = findViewById(R.id.maps_inputnotes);
         if(notes == null){
             notes.setText("");
         }
-        TextView notesLyt = (TextView) findViewById(R.id.maps_notes);
+        TextView notesLyt = findViewById(R.id.maps_notes);
         notesLyt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,7 +138,7 @@ public class MapsActivityJava extends FragmentActivity implements OnMapReadyCall
             }
         });
 
-        wastetype = (TextView) findViewById(R.id.maps_inputwaste);
+        wastetype = findViewById(R.id.maps_inputwaste);
         if(wastetype == null){
             wastetype.setText(" ");
         }
@@ -219,7 +218,7 @@ public class MapsActivityJava extends FragmentActivity implements OnMapReadyCall
      */
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[],
+                                           @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         mLocationPermissionGranted = false;
         switch (requestCode) {
@@ -288,7 +287,6 @@ public class MapsActivityJava extends FragmentActivity implements OnMapReadyCall
             public void onSuccess(Location location) {
                 if (location != null){
                     // Do it all with location
-                    Log.d("My Current location", "Lat : " + location.getLatitude() + " Long : " + location.getLongitude());
                     myLocation = new LatLng(location.getLatitude(), location.getLongitude());
                     mMap.addMarker(new MarkerOptions().position(myLocation).title("You are here").draggable(true));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
@@ -408,13 +406,12 @@ public class MapsActivityJava extends FragmentActivity implements OnMapReadyCall
         }).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Log.d(TAG, "Transaction success!");
+
             }
         })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Transaction failure.", e);
                     }
                 });
     }
@@ -440,18 +437,18 @@ public class MapsActivityJava extends FragmentActivity implements OnMapReadyCall
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
-        final EditText et_post = (EditText) dialog.findViewById(R.id.notes_fieldadd);
+        final EditText et_post = dialog.findViewById(R.id.notes_fieldadd);
 
         et_post.setText(notes.getText());
 
-        ((AppCompatButton) dialog.findViewById(R.id.bt_cancel)).setOnClickListener(new View.OnClickListener() {
+        dialog.findViewById(R.id.bt_cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
             }
         });
 
-        ((AppCompatButton) dialog.findViewById(R.id.bt_submit)).setOnClickListener(new View.OnClickListener() {
+        dialog.findViewById(R.id.bt_submit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String review = et_post.getText().toString().trim();
@@ -521,7 +518,7 @@ public class MapsActivityJava extends FragmentActivity implements OnMapReadyCall
             dialogIcon.setImageResource(R.drawable.ic_assignment_turned_in_black_24dp);
         }
 
-        ((AppCompatButton) dialog.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+        dialog.findViewById(R.id.bt_close).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //dialog.dismiss();
