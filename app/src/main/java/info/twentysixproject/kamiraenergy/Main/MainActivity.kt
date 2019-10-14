@@ -84,9 +84,9 @@ class MainActivity : AppCompatActivity(),
         FirebaseMessaging.getInstance().subscribeToTopic(getString(R.string.promotion_notification_channel_name))
             .addOnCompleteListener { task ->
                 //var msg = getString(R.string.msg_subscribed)
-                if (!task.isSuccessful) {
+                //if (!task.isSuccessful) {
                     //msg = getString(R.string.msg_subscribe_failed)
-                }
+                //}
                 //Log.d(TAG, msg)
                 //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
             }
@@ -199,17 +199,60 @@ class MainActivity : AppCompatActivity(),
     }
 
     private var customTabHelper: CustomTabHelper = CustomTabHelper()
+
+
+
+    override fun openCustomeLink(url: String) {
+        val builder = CustomTabsIntent.Builder()
+
+        // modify toolbar color
+        builder.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
+        // add share button to overflow menu
+        builder.addDefaultShareMenuItem()
+
+        val anotherCustomTab = CustomTabsIntent.Builder().build()
+        val requestCode = 100
+        val intent = anotherCustomTab.intent
+        intent.data = Uri.parse(url)
+
+        val pendingIntent = PendingIntent.getActivity(this@MainActivity,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT)
+
+        // add menu item to oveflow
+        builder.addMenuItem("Sample item", pendingIntent)
+        builder.setShowTitle(true)
+
+        // animation for enter and exit of tab
+        builder.setStartAnimations(this@MainActivity, android.R.anim.fade_in, android.R.anim.fade_out)
+        builder.setExitAnimations(this@MainActivity, android.R.anim.fade_in, android.R.anim.fade_out)
+
+        val customTabsIntent = builder.build()
+
+        // check is chrom available
+        val packageName = customTabHelper.getPackageNameToUse(this@MainActivity, url)
+
+        if (packageName == null) {
+            // if chrome not available open in web view
+            //val intentOpenUri = Intent(this, WebViewActivity::class.java)
+            //intentOpenUri.putExtra(WebViewActivity.EXTRA_URL, Uri.parse(PRIVACY_POLICY).toString())
+            //startActivity(intentOpenUri)
+        } else {
+            customTabsIntent.intent.setPackage(packageName)
+            customTabsIntent.launchUrl(this@MainActivity, Uri.parse(url))
+        }
+    }
+
     override fun openPolicyPrivacy() {
         val builder = CustomTabsIntent.Builder()
 
         // modify toolbar color
         builder.setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
-
         // add share button to overflow menu
         builder.addDefaultShareMenuItem()
 
         val anotherCustomTab = CustomTabsIntent.Builder().build()
-
         val requestCode = 100
         val intent = anotherCustomTab.intent
         intent.data = Uri.parse(PRIVACY_POLICY)
@@ -221,15 +264,6 @@ class MainActivity : AppCompatActivity(),
 
         // add menu item to oveflow
         builder.addMenuItem("Sample item", pendingIntent)
-
-        // menu item icon
-        // val bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher)
-        // builder.setActionButton(bitmap, "Android", pendingIntent, true)
-
-        // modify back button icon
-        // builder.setCloseButtonIcon(bitmap)
-
-        // show website title
         builder.setShowTitle(true)
 
         // animation for enter and exit of tab

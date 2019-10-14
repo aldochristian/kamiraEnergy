@@ -44,6 +44,8 @@ class HomeViewModel: ViewModel(){
 
         imageList.add(SlideModel(
             "https://firebasestorage.googleapis.com/v0/b/twentysixproject-a4530/o/promo%2Fjaga_botol_tidak_ke_laut.png?alt=media&token=7de26d54-1990-4133-8ce1-c43eb43c9569"))
+        imageList.add(SlideModel(
+            "https://firebasestorage.googleapis.com/v0/b/twentysixproject-a4530/o/promo%2Fpromo_kado_kamira.png?alt=media&token=5f2a36d4-886e-46d9-87f3-96176485e8b2"))
         return imageList
     }
 

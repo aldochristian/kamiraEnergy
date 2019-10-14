@@ -42,7 +42,7 @@ class EditprofileViewModel : ViewModel() {
         fetchFirestore()
     }
 
-    fun fetchFirestore(){
+    private fun fetchFirestore(){
         _hasLoaded.value = false
         val docRef = db.collection(USERS).document(user!!.uid)
         docRef.get()
@@ -62,7 +62,9 @@ class EditprofileViewModel : ViewModel() {
 
                     _activatedAccount.value = document.get("activeStatus").toString()
                 } else {
-                    //Log.d(TAG, "No such document")
+                    name.value = null
+                    city.value = null
+                    zipcode.value = null
                 }
             }
             .addOnFailureListener {

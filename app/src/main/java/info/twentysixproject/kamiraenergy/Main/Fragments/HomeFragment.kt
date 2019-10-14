@@ -79,7 +79,9 @@ class HomeFragment : Fragment() {
         imageSlider?.setItemClickListener(object : ItemClickListener {
             override fun onItemSelected(position: Int) {
                 // You can listen here.
-                Log.d(TAG, "I'm pressing "+position)
+                when(position){
+                    1 -> forHome?.openCustomeLink("https://firebasestorage.googleapis.com/v0/b/twentysixproject-a4530/o/promo%2Fpromo_kado_kamira_poster.png?alt=media&token=7a470407-f3b1-45dc-9b1f-e9f1282a0336")
+                }
             }
         })
 
@@ -181,6 +183,7 @@ class HomeFragment : Fragment() {
     interface OnFragmentInteractionForHome {
         fun openGmaps()
         fun captureBottle()
+        fun openCustomeLink(url: String)
     }
 
     fun showSnackbar() {

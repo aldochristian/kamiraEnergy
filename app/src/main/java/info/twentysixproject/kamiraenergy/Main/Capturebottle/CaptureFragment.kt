@@ -45,6 +45,7 @@ class CaptureFragment : Fragment() {
     private val CAMERA = 2
     private val PERMISSION_CODE = 1000
     var imageUri: Uri? = null
+    var imagePickCheck = false
 
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
     val user: String? = FirebaseAuth.getInstance().uid
@@ -98,9 +99,14 @@ class CaptureFragment : Fragment() {
         }
 
         binding.captBtnupload.setOnClickListener {
-            binding.progressIndeterminate.visibility = View.VISIBLE
-            val key: String = viewModel.detailFileToBeUploaded(user)
-            storedToBucket(key)
+            if(imagePickCheck){
+                binding.progressIndeterminate.visibility = View.VISIBLE
+                val key: String = viewModel.detailFileToBeUploaded(user)
+                storedToBucket(key)
+            }else{
+                warningDialog(requireContext(), "Upload error", "Please take picture first prior upload")
+            }
+
         }
 
         viewModel.successUpload.observe(this, Observer<Int> {
@@ -174,7 +180,7 @@ class CaptureFragment : Fragment() {
     }
 
     fun storedToBucket(fileName: String): Boolean{
-        var successStored = false
+        imagePickCheck = false
         val storageRef = storage.reference
         val myBucket = storageRef.child(CAPTUREBOTTLE+"/"+user+"/"+fileName) //e.g : capturebottle/{USERID}/{NamaFile}
 
@@ -188,9 +194,9 @@ class CaptureFragment : Fragment() {
             // Handle unsuccessful uploads
         }.addOnSuccessListener {
             // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
-            successStored = true
+           //
         }
-        return successStored
+        return true
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -227,6 +233,7 @@ class CaptureFragment : Fragment() {
                     val imageStream: InputStream? = requireContext().contentResolver.openInputStream(thumbnail)
                     val selectedImageAfter: Bitmap = BitmapFactory.decodeStream(imageStream)
                     getResizedBitmap(selectedImageAfter, 400)
+                    imagePickCheck = true
                     //imageview?.setImageBitmap(selectedImageAfter)
                 }catch (e: FileNotFoundException){
                     e.printStackTrace()
@@ -239,6 +246,7 @@ class CaptureFragment : Fragment() {
             if(resultCode == Activity.RESULT_OK){
                 try {
                     viewModel.setImageUri(imageUri!!) //imageview?.setImageURI(imageUri)
+                    imagePickCheck = true
                 }catch (e: Exception){
                     e.printStackTrace()
                 }
