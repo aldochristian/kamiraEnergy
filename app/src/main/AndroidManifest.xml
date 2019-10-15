@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        package="info.twentysixproject.kamiraenergy">
+        package="info.twentysixproject.kamiraen">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -29,12 +29,12 @@
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-                android:name=".Main.Capturebottle.CapturebottleActivity"
+                android:name="info.twentysixproject.kamiraen.Main.Capturebottle.CapturebottleActivity"
                 android:label="@string/title_activity_capturebottle"
                 android:theme="@style/AppTheme.NoActionBar"
                 tools:ignore="InnerclassSeparator" />
         <activity
-                android:name=".points.RewardActivity"
+                android:name="info.twentysixproject.kamiraen.points.RewardActivity"
                 android:label="@string/title_activity_reward"
                 android:theme="@style/AppTheme.NoActionBar" />
         <!--
@@ -67,7 +67,7 @@
                 android:value="@string/default_notification_channel_id" />
 
         <activity
-                android:name=".Authentication.SplashActivity"
+                android:name="info.twentysixproject.kamiraen.Authentication.SplashActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
                 android:label="@string/app_name"
                 android:theme="@style/FullscreenTheme"
@@ -79,21 +79,21 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".Main.MapsActivityJava"
+                android:name="info.twentysixproject.kamiraen.Main.MapsActivityJava"
                 android:label="@string/title_activity_maps_java"
                 tools:ignore="InnerclassSeparator" />
         <activity
-                android:name=".PickupGarbageFragment"
+                android:name="info.twentysixproject.kamiraen.PickupGarbageFragment"
                 android:label="Pickup" />
         <activity
-                android:name=".MapsActivity"
+                android:name="info.twentysixproject.kamiraen.MapsActivity"
                 android:label="@string/title_activity_maps" />
-        <activity android:name=".Authentication.PhoneAuthActivity"
+        <activity android:name="info.twentysixproject.kamiraen.Authentication.PhoneAuthActivity"
                 tools:ignore="InnerclassSeparator" />
-        <activity android:name=".Authentication.LoginActivity"
+        <activity android:name="info.twentysixproject.kamiraen.Authentication.LoginActivity"
                 tools:ignore="InnerclassSeparator" />
         <activity
-                android:name=".utils.FirebaseUIActivity"
+                android:name="info.twentysixproject.kamiraen.utils.FirebaseUIActivity"
                 android:label="@string/title_activity_firebase_ui"
                 android:theme="@style/AppTheme.NoActionBar" /> <!-- [START fcm_default_icon] -->
         <!--
@@ -114,11 +114,11 @@
         <meta-data
                 android:name="com.google.firebase.messaging.default_notification_channel_id"
                 android:value="@string/default_notification_channel_id" /> <!-- [END fcm_default_channel] -->
-        <activity android:name=".Main.MainActivity"
+        <activity android:name="info.twentysixproject.kamiraen.Main.MainActivity"
                 tools:ignore="InnerclassSeparator" />
 
         <service
-                android:name=".utils.MyFirebaseMessagingService"
+                android:name="info.twentysixproject.kamiraen.utils.MyFirebaseMessagingService"
                 android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

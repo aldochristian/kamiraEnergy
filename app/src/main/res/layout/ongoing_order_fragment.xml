@@ -6,7 +6,7 @@
     <data>
         <variable
                 name="ongoingOrderViewModel"
-                type="info.twentysixproject.kamiraenergy.viewmodel.OngoingOrderViewModel" />
+                type="info.twentysixproject.kamiraen.viewmodel.OngoingOrderViewModel" />
     </data>
 
     <FrameLayout

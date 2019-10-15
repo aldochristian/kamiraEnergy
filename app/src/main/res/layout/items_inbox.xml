@@ -5,10 +5,10 @@
     <data>
         <variable
                 name="inbox"
-                type="info.twentysixproject.kamiraenergy.dataclass.Inbox" />
+                type="info.twentysixproject.kamiraen.dataclass.Inbox" />
         <variable
                 name="clickListener"
-                type="info.twentysixproject.kamiraenergy.adapter.InboxListener" />
+                type="info.twentysixproject.kamiraen.adapter.InboxListener" />
     </data>
 
     <LinearLayout

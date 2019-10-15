@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
         <variable
                 name="model"
-                type="info.twentysixproject.kamiraenergy.viewmodel.EditprofileViewModel" />
+                type="info.twentysixproject.kamiraen.viewmodel.EditprofileViewModel" />
 
     </data>
 

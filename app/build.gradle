@@ -9,11 +9,11 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "info.twentysixproject.kamiraenergy"
+        applicationId "info.twentysixproject.kamiraen"
         minSdkVersion 26
         targetSdkVersion 28
-        versionCode 3
-        versionName "Beta 0.3.0"
+        versionCode 4
+        versionName "Beta 0.4.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

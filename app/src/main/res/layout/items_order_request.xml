@@ -6,10 +6,10 @@
         <import type="android.view.View"/>
         <variable
                 name="order"
-                type="info.twentysixproject.kamiraenergy.dataclass.Orders" />
+                type="info.twentysixproject.kamiraen.dataclass.Orders" />
         <variable
                 name="clickListener"
-                type="info.twentysixproject.kamiraenergy.adapter.OnGoingOrderListener" />
+                type="info.twentysixproject.kamiraen.adapter.OnGoingOrderListener" />
     </data>
 
         <androidx.cardview.widget.CardView

@@ -8,12 +8,57 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:171620706051:android:da9bcc2a50c05789ba6b36",
+        "android_client_info": {
+          "package_name": "info.twentysixproject.kamiraen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171620706051-sg1ck4cm4vgjs81ji38taodif84rd74s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "info.twentysixproject.kamiraen",
+            "certificate_hash": "e9e59dc95573f068f4133de7d958924dd622701e"
+          }
+        },
+        {
+          "client_id": "171620706051-eh2nes6cgupc0h102is8j8v1v8l3v1pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1nkiAGNi_jGXVT1B-EZh02PAwfy8TDBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171620706051-eh2nes6cgupc0h102is8j8v1v8l3v1pn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:171620706051:android:8ea9c6bfdb820d14",
         "android_client_info": {
           "package_name": "info.twentysixproject.kamiraenergy"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "171620706051-rij5tvqd6au91mp99vosjidqf30aj0rn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "info.twentysixproject.kamiraenergy",
+            "certificate_hash": "ef2def72ba94912f51fe953e8d9c6306b845b4d5"
+          }
+        },
         {
           "client_id": "171620706051-ib9j5dapbm14kj6ueels7aok5klsm3ng.apps.googleusercontent.com",
           "client_type": 1,

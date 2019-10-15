@@ -6,7 +6,7 @@
         <data>
                 <variable
                         name="messageViewModel"
-                        type="info.twentysixproject.kamiraenergy.viewmodel.MessageViewModel" />
+                        type="info.twentysixproject.kamiraen.viewmodel.MessageViewModel" />
         </data>
 
         <LinearLayout

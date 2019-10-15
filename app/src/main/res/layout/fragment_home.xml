@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="model"
-                type="info.twentysixproject.kamiraenergy.viewmodel.HomeViewModel" />
+                type="info.twentysixproject.kamiraen.viewmodel.HomeViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -198,7 +198,7 @@
 
                     <!-- Placing image slider -->
 
-                    <info.twentysixproject.kamiraenergy.utils.ImageSlider
+                    <info.twentysixproject.kamiraen.utils.ImageSlider
                             android:id="@+id/image_slider"
                             android:layout_width="wrap_content"
                             android:layout_height="150dp"

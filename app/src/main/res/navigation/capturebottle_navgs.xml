@@ -5,6 +5,6 @@
 
     <fragment
             android:id="@+id/captureFragment"
-            android:name="info.twentysixproject.kamiraenergy.Main.Capturebottle.CaptureFragment"
+            android:name="info.twentysixproject.kamiraen.Main.Capturebottle.CaptureFragment"
             android:label="CaptureFragment" />
 </navigation>

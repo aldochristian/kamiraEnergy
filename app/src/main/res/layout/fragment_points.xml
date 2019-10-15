@@ -6,7 +6,7 @@
     <data>
         <variable
                 name="model"
-                type="info.twentysixproject.kamiraenergy.viewmodel.PointsViewModel" />
+                type="info.twentysixproject.kamiraen.viewmodel.PointsViewModel" />
     </data>
 
     <LinearLayout
