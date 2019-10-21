@@ -12,8 +12,8 @@ import androidx.viewpager.widget.PagerAdapter
 import com.squareup.picasso.Picasso
 import info.twentysixproject.kamiraen.R
 import info.twentysixproject.kamiraen.interfaces.ItemClickListener
-import info.twentysixproject.kamiraen.model.SlideModel
-import info.twentysixproject.kamiraen.transformation.RoundedTransformation
+import info.twentysixproject.kamiraen.utils.model.SlideModel
+import info.twentysixproject.kamiraen.utils.transformation.RoundedTransformation
 
 class ViewPagerAdapter(context: Context?, imageList: List<SlideModel>, private var radius: Int, private var errorImage: Int, private var placeholder: Int, private var centerCrop: Boolean?) : PagerAdapter() {
 

@@ -1,22 +1,25 @@
 package info.twentysixproject.kamiraen.Authentication
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.text.TextUtils
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
-import info.twentysixproject.kamiraen.Main.MainActivity
 import info.twentysixproject.kamiraen.R
-import kotlinx.android.synthetic.main.activity_phone_auth.*
 import java.util.*
 import java.util.concurrent.TimeUnit
+import android.os.CountDownTimer
+import android.text.TextUtils
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_phone.*
 
-class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
-
+/**
+ * A simple [Fragment] subclass.
+ */
+class PhoneFragment : Fragment(), View.OnClickListener {
 
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
@@ -27,13 +30,19 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_phone_auth)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_phone, container, false)
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         // Restore instance state
         if (savedInstanceState != null) {
-            onRestoreInstanceState(savedInstanceState)
+            //onRestoreInstanceState(savedInstanceState)
         }
 
         // Assign click listeners
@@ -139,10 +148,10 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
         outState.putBoolean(KEY_VERIFY_IN_PROGRESS, verificationInProgress)
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+    /*override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         verificationInProgress = savedInstanceState.getBoolean(KEY_VERIFY_IN_PROGRESS)
-    }
+    }*/
 
     private fun startPhoneNumberVerification(phoneNumber: String) {
         // [START start_phone_auth]
@@ -150,7 +159,7 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
             phoneNumber, // Phone number to verify
             60, // Timeout duration
             TimeUnit.SECONDS, // Unit of timeout
-            this, // Activity (for callback binding)
+            requireActivity(), // Activity (for callback binding)
             callbacks) // OnVerificationStateChangedCallbacks
         // [END start_phone_auth]
 
@@ -173,7 +182,7 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
             phoneNumber, // Phone number to verify
             60, // Timeout duration
             TimeUnit.SECONDS, // Unit of timeout
-            this, // Activity (for callback binding)
+            requireActivity(), // Activity (for callback binding)
             callbacks, // OnVerificationStateChangedCallbacks
             token) // ForceResendingToken from callbacks
     }
@@ -182,7 +191,7 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
     // [START sign_in_with_phone]
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
+            .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
 
@@ -332,7 +341,6 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     companion object {
-        private const val TAG = "PhoneAuthActivity"
         private const val KEY_VERIFY_IN_PROGRESS = "key_verify_in_progress"
         private const val STATE_INITIALIZED = 1
         private const val STATE_VERIFY_FAILED = 3
@@ -343,9 +351,10 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun directToMain(){
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
+        //val intent = Intent(this, MainActivity::class.java)
+        //startActivity(intent)
+        //finish()
+        findNavController().navigate(R.id.phonetocreatefr_act)
     }
 
     private fun countDownTimer() {
@@ -356,7 +365,7 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
                     TimeUnit.MILLISECONDS.toMinutes(l) % 60,
                     TimeUnit.MILLISECONDS.toSeconds(l) % 60
                 )
-                phone_counter.text = text
+                //phone_counter.text = text
             }
 
             override fun onFinish() {
@@ -365,4 +374,6 @@ class PhoneAuthActivity : AppCompatActivity(), View.OnClickListener {
         }
         countDownTimer.start()
     }
+
+
 }

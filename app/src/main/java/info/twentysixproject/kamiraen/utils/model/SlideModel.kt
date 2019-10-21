@@ -1,4 +1,4 @@
-package info.twentysixproject.kamiraen.model
+package info.twentysixproject.kamiraen.utils.model
 
 class SlideModel {
 

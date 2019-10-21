@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Main.Fragments.EditprofileFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/kamira_major"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:contentInsetStartWithNavigation="0dp"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/frcreate_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:clipToPadding="false"
+            android:padding="@dimen/spacing_large"
+            android:scrollbars="none"
+            android:scrollingCache="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+                android:id="@+id/frcreate_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/grey_40"
+                    app:errorTextAppearance="@style/ErrorText">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/grey_40">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edprofile_txtname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/edprofile_radiosex" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_middle" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/grey_40">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edprofile_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="+628xxx"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/edprofile_radiosex" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_middle" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sex"/>
+
+            <RadioGroup
+                    android:id="@+id/edprofile_radiosex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                <RadioButton
+                        android:id="@+id/male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male" />
+                <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"/>
+
+                <RadioButton
+                        android:id="@+id/female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female" />
+
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/grey_40">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edprofile_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Address"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:lines="3"
+                        android:maxLines="3" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_middle" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/grey_40">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edprofile_city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="City*"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:lines="1"
+                            android:nextFocusDown="@id/edprofile_zipcode" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textColorHint="@color/grey_40">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edprofile_zipcode"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:hint="Zip code*"
+                            android:inputType="number"
+                            android:lines="1" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_middle" />
+            <TextView
+                    android:id="@+id/edprofile_error"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/red_300" />
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_mxlarge" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/edprofile_btnsave"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/btn_rounded_kamira_major"
+                    android:text="Save"
+                    android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

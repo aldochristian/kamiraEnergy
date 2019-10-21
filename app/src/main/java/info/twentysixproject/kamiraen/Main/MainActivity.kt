@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity(),
     private lateinit var functions: FirebaseFunctions
 
     var disableCallGrab: Boolean = true // Prevent Double activity called
+    var firstTimeLogin: Boolean = false // Ensure data admin initiate for first time login
 
     override fun onStart() {
         super.onStart()
@@ -64,6 +65,8 @@ class MainActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        firstTimeLogin =intent.getBooleanExtra("firstTimeLogin", false)
 
         // FCM initiate
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -139,22 +142,25 @@ class MainActivity : AppCompatActivity(),
                 // Stored token
                 val checkDoc = db.collection("users").document(userUid!!)
 
-                checkDoc.update("lastLogin", FieldValue.serverTimestamp())
-                    .addOnSuccessListener {
-
-                    }.addOnFailureListener {
-                        val data = hashMapOf(
-                            "fcmToken" to token,
-                            "point" to 0.00,
-                            "contribution" to 0.00)
-                        db.collection("users").document(userUid)
-                            .set(data, SetOptions.merge())
-                            .addOnSuccessListener {
-                                adminConfiguration("test")
-                            }
-                            .addOnFailureListener {
-                            }
-                    }
+                if(firstTimeLogin){
+                    val data = hashMapOf(
+                        "fcmToken" to token,
+                        "point" to 0.00,
+                        "contribution" to 0.00)
+                    db.collection("users").document(userUid)
+                        .set(data, SetOptions.merge())
+                        .addOnSuccessListener {
+                            adminConfiguration("test")
+                        }
+                        .addOnFailureListener {
+                        }
+                }else {
+                    checkDoc.update("lastLogin", FieldValue.serverTimestamp())
+                        .addOnSuccessListener {
+                        }.addOnFailureListener {
+                            //No docs found to update
+                        }
+                }
 
             })
     }

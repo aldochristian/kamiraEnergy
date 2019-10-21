@@ -1,4 +1,4 @@
-package info.twentysixproject.kamiraen.transformation
+package info.twentysixproject.kamiraen.utils.transformation
 
 import android.graphics.*
 import com.squareup.picasso.Transformation

@@ -175,7 +175,6 @@ class CaptureFragment : Fragment() {
     }
 
     fun storedToBucket(fileName: String): Boolean{
-        imagePickCheck = false
         val storageRef = storage.reference
         val myBucket = storageRef.child(CAPTUREBOTTLE+"/"+user+"/"+fileName) //e.g : capturebottle/{USERID}/{NamaFile}
 
@@ -187,9 +186,10 @@ class CaptureFragment : Fragment() {
         val uploadTask = myBucket.putBytes(data)
         uploadTask.addOnFailureListener {
             // Handle unsuccessful uploads
+            imagePickCheck = false
         }.addOnSuccessListener {
             // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
-           //
+            imagePickCheck = true
         }
         return true
     }
@@ -228,11 +228,11 @@ class CaptureFragment : Fragment() {
                     val imageStream: InputStream? = requireContext().contentResolver.openInputStream(thumbnail)
                     val selectedImageAfter: Bitmap = BitmapFactory.decodeStream(imageStream)
                     getResizedBitmap(selectedImageAfter, 400)
-                    imagePickCheck = true
                     //imageview?.setImageBitmap(selectedImageAfter)
                 }catch (e: FileNotFoundException){
                     e.printStackTrace()
                 }
+                imagePickCheck = true
             }
 
         }
@@ -241,10 +241,10 @@ class CaptureFragment : Fragment() {
             if(resultCode == Activity.RESULT_OK){
                 try {
                     viewModel.setImageUri(imageUri!!) //imageview?.setImageURI(imageUri)
-                    imagePickCheck = true
                 }catch (e: Exception){
                     e.printStackTrace()
                 }
+                imagePickCheck = true
             }
         }
     }

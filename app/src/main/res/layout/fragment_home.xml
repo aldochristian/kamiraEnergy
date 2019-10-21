@@ -44,7 +44,6 @@
                     <ImageView
                             android:layout_width="28dp"
                             android:layout_height="28dp"
-                            android:tint="@android:color/white"
                             app:srcCompat="@drawable/logo_kamira" />
 
                     <TextView

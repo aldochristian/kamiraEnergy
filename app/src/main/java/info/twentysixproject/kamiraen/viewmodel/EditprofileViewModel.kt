@@ -44,6 +44,8 @@ class EditprofileViewModel : ViewModel() {
 
     private fun fetchFirestore(){
         _hasLoaded.value = false
+        var phoneNumber: String? = null //Contain phone number from user regis with Google federation
+
         val docRef = db.collection(USERS).document(user!!.uid)
         docRef.get()
             .addOnSuccessListener { document ->
@@ -56,7 +58,8 @@ class EditprofileViewModel : ViewModel() {
                     }else if (sex == "female"){
                         sex_female.value = true
                     }
-
+                    phoneNumber = document.get("phone").toString()
+                    address.value = document.get(ADDRESS).toString()
                     city.value = document.get(CITY).toString()
                     zipcode.value = document.get(ZIPCODE).toString()
 
@@ -69,7 +72,11 @@ class EditprofileViewModel : ViewModel() {
             }
             .addOnFailureListener {
             }
-        phone.value = "You had registered with number "+user.phoneNumber
+        if (user.phoneNumber.isNullOrEmpty()){
+            phone.value = "You had registered with email " + user.email
+        }else {
+            phone.value = "You had registered with number " + user.phoneNumber
+        }
         _hasLoaded.value = true
         _hasComplete.value = false
     }

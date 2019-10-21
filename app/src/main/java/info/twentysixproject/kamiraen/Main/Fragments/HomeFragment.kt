@@ -27,7 +27,6 @@ import info.twentysixproject.kamiraen.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
 
-    val TAG: String = "HomeFragment"
     internal var forHome: OnFragmentInteractionForHome? = null
     lateinit var functions: FirebaseFunctions
     lateinit var viewModel: HomeViewModel
@@ -130,7 +129,7 @@ class HomeFragment : Fragment() {
                 // [START_EXCLUDE]
                 val result = task.result
                 //fieldMessageOutput.setText(result)
-                Log.d(TAG, result)
+                //Log.d(TAG, result)
                 // [END_EXCLUDE]
             })
         // [END call_add_message]

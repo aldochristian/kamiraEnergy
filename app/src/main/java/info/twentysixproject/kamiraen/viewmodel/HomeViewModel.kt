@@ -6,7 +6,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import info.twentysixproject.kamiraen.model.SlideModel
+import info.twentysixproject.kamiraen.utils.model.SlideModel
 import com.google.firebase.database.DatabaseReference
 import androidx.lifecycle.LiveData
 import com.google.firebase.firestore.FieldValue
@@ -16,7 +16,6 @@ import info.twentysixproject.kamiraen.utils.Utils
 
 class HomeViewModel: ViewModel(){
 
-    private lateinit var promoReference: DatabaseReference
     val storage = FirebaseStorage.getInstance("gs://twentysixproject-a4530")
     val db = FirebaseFirestore.getInstance()
     val auth: FirebaseAuth = FirebaseAuth.getInstance()

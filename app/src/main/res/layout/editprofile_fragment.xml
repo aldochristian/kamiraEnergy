@@ -119,6 +119,7 @@
                         android:textColorHint="@color/grey_40">
 
                     <androidx.appcompat.widget.AppCompatEditText
+                            android:text="@={model.address}"
                             android:maxLines="3"
                             android:lines="3"
                             android:nextFocusDown="@id/edprofile_city"

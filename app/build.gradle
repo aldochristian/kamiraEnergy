@@ -12,8 +12,8 @@ android {
         applicationId "info.twentysixproject.kamiraen"
         minSdkVersion 26
         targetSdkVersion 28
-        versionCode 4
-        versionName "Beta 0.4.1"
+        versionCode 5
+        versionName "Beta 0.5.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

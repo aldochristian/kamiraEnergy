@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:backgroundTint="@android:color/transparent"
+            android:orientation="vertical">
+
+        <ProgressBar
+                android:id="@+id/login_progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:layout_width="330dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_large">
+
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/spacing_middle" />
+
+                <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/logo_kamira" />
+
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/spacing_large" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:text="Welcome Back,"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                        android:textColor="@color/blue_grey_800"
+                        android:textStyle="bold" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:text="Sign in to continue"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/blue_grey_300"
+                        android:textStyle="bold" />
+
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/spacing_middle" />
+
+                <Button
+                        android:id="@+id/login_phnumberbtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="-4dp"
+                        android:layout_marginRight="-4dp"
+                        android:background="@drawable/btn_kamira_a400"
+                        android:text="Login with phone number"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/spacing_middle" />
+
+                <TextView
+                        android:id="@+id/forgot_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:clickable="true"
+                        android:text="Or"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/blue_grey_400"
+                        android:textStyle="bold" />
+
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/spacing_large" />
+
+                <com.google.android.gms.common.SignInButton
+                        android:id="@+id/signInButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:visibility="visible" />
+
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/spacing_medium" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="New user? "
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/blue_grey_300"
+                            android:visibility="gone"/>
+
+                    <TextView
+                            android:id="@+id/privacypolicyButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:text="Privacy policy"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/kamira_major"
+                            android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/spacing_xlarge" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+</LinearLayout>

@@ -12,7 +12,7 @@ import androidx.viewpager.widget.ViewPager
 import info.twentysixproject.kamiraen.R
 import info.twentysixproject.kamiraen.adapter.ViewPagerAdapter
 import info.twentysixproject.kamiraen.interfaces.ItemClickListener
-import info.twentysixproject.kamiraen.model.SlideModel
+import info.twentysixproject.kamiraen.utils.model.SlideModel
 import java.util.*
 
 class ImageSlider @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
