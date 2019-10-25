@@ -5,6 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import info.twentysixproject.kamiraen.utils.Crash
+import info.twentysixproject.kamiraen.utils.Crash.logReportAndPrint
+import info.twentysixproject.kamiraen.utils.Crash.logReportOnly
 
 class CaptureViewModel : ViewModel() {
 
@@ -51,6 +54,7 @@ class CaptureViewModel : ViewModel() {
     }
 
     fun incrementCounter(userId: String?){
+
         val counterRef = db.collection("users").document(userId!!).collection("adminSet").document("counterCapture")
 
         db.runTransaction { transaction ->
@@ -65,9 +69,17 @@ class CaptureViewModel : ViewModel() {
             // Success
             null
         }.addOnSuccessListener {
-            _successUpload.value = SUCCESS
+
         }.addOnFailureListener { _ ->
+
             _successUpload.value = FAIL
         }
+    }
+
+    fun objectStored(){
+        _successUpload.value = SUCCESS
+    }
+    fun objectFailtoStored(){
+        _successUpload.value = FAIL
     }
 }

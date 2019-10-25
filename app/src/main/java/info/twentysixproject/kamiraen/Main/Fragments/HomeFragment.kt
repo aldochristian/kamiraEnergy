@@ -44,10 +44,10 @@ class HomeFragment : Fragment() {
         binding.model = viewModel
 
         viewModel.myPoints.observe(this, Observer<String> {
-            binding.frhomePointdet.text = "We gave you "+it+" points"
+            binding.frhomePointdet.text = it
         })
         viewModel.myContribution.observe(this, Observer<String> {
-            binding.frhomeContributiondet.text = "You contributed with save "+it+" Ltr plastic"
+            binding.frhomeContributiondet.text = it
         })
 
         binding.frhomeFieldgarbage.setOnClickListener {

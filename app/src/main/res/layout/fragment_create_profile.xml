@@ -22,17 +22,21 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
             android:id="@+id/frcreate_progress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/spacing_medium"
             android:orientation="vertical"
             android:visibility="visible">
-        <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <info.twentysixproject.kamiraen.widget.ViewLoadingDotsBounce
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="80dp"
+                android:background="@color/kamira_minor" />
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"

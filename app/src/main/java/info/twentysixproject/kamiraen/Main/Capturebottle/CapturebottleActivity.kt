@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import info.twentysixproject.kamiraen.R
 
 class CapturebottleActivity : AppCompatActivity() {
+
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
     val user: String? = FirebaseAuth.getInstance().uid
 

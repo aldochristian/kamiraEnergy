@@ -13,6 +13,7 @@ import android.os.Build
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
@@ -21,20 +22,26 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.crashlytics.android.Crashlytics
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 
 import info.twentysixproject.kamiraen.R
 import info.twentysixproject.kamiraen.databinding.CaptureFragmentBinding
+import info.twentysixproject.kamiraen.utils.Crash
 import info.twentysixproject.kamiraen.utils.FirebaseRepo.CAPTUREBOTTLE
 import info.twentysixproject.kamiraen.utils.FirebaseRepo.storeAddress
 import info.twentysixproject.kamiraen.utils.Utils.confirmDialog
 import info.twentysixproject.kamiraen.utils.Utils.warningDialog
+import io.fabric.sdk.android.Fabric
 import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
 import java.io.InputStream
 
 class CaptureFragment : Fragment() {
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     private val GALLERY = 1
     private val CAMERA = 2
@@ -58,6 +65,9 @@ class CaptureFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        Fabric.with(requireContext(), Crashlytics()) // Crashlytics
+        firebaseAnalytics = FirebaseAnalytics.getInstance(requireContext()) // Analystics
 
         val binding: CaptureFragmentBinding = DataBindingUtil.inflate(
             inflater, R.layout.capture_fragment, container, false)
@@ -97,7 +107,12 @@ class CaptureFragment : Fragment() {
             if(imagePickCheck){
                 binding.progressIndeterminate.visibility = View.VISIBLE
                 val key: String = viewModel.detailFileToBeUploaded(user)
-                storedToBucket(key)
+                if(!key.isNullOrEmpty()) {
+                    storedToBucket(key)
+                }else{
+                    viewModel.successUploaded()
+                    findNavController().popBackStack()
+                }
             }else{
                 warningDialog(requireContext(), "Upload error", "Please take picture first prior upload")
             }
@@ -186,10 +201,14 @@ class CaptureFragment : Fragment() {
         val uploadTask = myBucket.putBytes(data)
         uploadTask.addOnFailureListener {
             // Handle unsuccessful uploads
+            viewModel.objectFailtoStored()
             imagePickCheck = false
+            findNavController().popBackStack()
         }.addOnSuccessListener {
             // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+            viewModel.objectStored()
             imagePickCheck = true
+            findNavController().popBackStack()
         }
         return true
     }

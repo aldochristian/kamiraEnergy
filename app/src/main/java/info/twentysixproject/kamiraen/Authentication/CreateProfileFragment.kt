@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.widget.NestedScrollView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
@@ -47,12 +48,13 @@ class CreateProfileFragment : Fragment() {
         verification(view) //check first time login
 
         view.edprofile_btnsave.setOnClickListener {
-            view.findViewById<CoordinatorLayout>(R.id.frcreate_progress).visibility = View.VISIBLE
+            view.findViewById<LinearLayout>(R.id.frcreate_progress).visibility = View.VISIBLE
+            view.findViewById<LinearLayout>(R.id.frcreate_content).visibility = View.GONE
             validation(view)
             if (validationForm){
                 createProfile()
             }else{
-                view.findViewById<CoordinatorLayout>(R.id.frcreate_progress).visibility = View.GONE
+                view.findViewById<LinearLayout>(R.id.frcreate_progress).visibility = View.GONE
             }
         }
     }
@@ -126,8 +128,12 @@ class CreateProfileFragment : Fragment() {
                 if (document.data != null) {
                     forCreateProfile?.callMainActivity(false)//Proceed to main
                 } else {
-                    view.findViewById<CoordinatorLayout>(R.id.frcreate_progress).visibility = View.GONE
+                    view.findViewById<LinearLayout>(R.id.frcreate_progress).visibility = View.GONE
                     view.findViewById<LinearLayout>(R.id.frcreate_content).visibility = View.VISIBLE
+                    if(user.phoneNumber != null) {
+                        edprofile_phone.setText(user.phoneNumber)
+                        edprofile_phone.isEnabled = false
+                    }
                 }
             }
             .addOnFailureListener {
