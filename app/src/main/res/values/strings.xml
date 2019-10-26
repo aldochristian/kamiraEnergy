@@ -257,7 +257,7 @@
     <string name="collector_name">Pending on collector pool</string>
 
     <!-- About and versioning -->
-    <string name="version">Beta 0.5.1</string>
+    <string name="version">Beta 0.5.2</string>
     <string name="last_update">September 2019</string>
     <string name="landing_page">https://www.kamira.energy</string>
     <string name="contact_email">email : info@kamira.energy</string>

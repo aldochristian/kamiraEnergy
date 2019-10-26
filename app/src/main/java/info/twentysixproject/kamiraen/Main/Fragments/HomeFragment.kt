@@ -58,7 +58,7 @@ class HomeFragment : Fragment() {
             forHome?.captureBottle()
         }
         binding.frhomeRedeem.setOnClickListener {
-            showRedeemDialog()
+            //showRedeemDialog()
         }
 
         binding.lifecycleOwner = this

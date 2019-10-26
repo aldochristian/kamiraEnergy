@@ -39,7 +39,7 @@ class MessageFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(MessageViewModel::class.java)
 
-        binding.messageViewModel = viewModel
+        //binding.messageViewModel = viewModel
 
         val adapter = InboxAdapter(InboxListener {
 

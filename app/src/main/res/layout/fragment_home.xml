@@ -132,7 +132,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/redeem"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                                android:textColor="@android:color/white"
+                                android:textColor="@color/grey_20"
                                 app:fontFamily="sans-serif-medium" />
 
                         <ImageView
@@ -140,7 +140,7 @@
                                 android:layout_width="@dimen/spacing_xmlarge"
                                 android:layout_height="@dimen/spacing_xmlarge"
                                 android:layout_marginTop="@dimen/spacing_small"
-                                android:tint="@android:color/white"
+                                android:tint="@color/grey_20"
                                 app:srcCompat="@drawable/ic_favorite_black_24dp" />
 
                     </LinearLayout>
