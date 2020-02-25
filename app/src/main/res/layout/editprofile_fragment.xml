@@ -74,7 +74,7 @@
                             android:inputType="text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Name" />
+                            android:hint="@string/name" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,7 +83,7 @@
                         android:layout_height="@dimen/spacing_middle" />
 
                 <TextView
-                        android:text="Sex"
+                        android:text="@string/sex"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -99,7 +99,7 @@
                             android:checked="@={model.sex_male}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Male" />
+                            android:text="@string/male" />
                     <View
                             android:layout_width="10dp"
                             android:layout_height="10dp"/>
@@ -109,7 +109,7 @@
                             android:checked="@={model.sex_female}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Female" />
+                            android:text="@string/female" />
 
                 </RadioGroup>
 
@@ -127,7 +127,7 @@
                             android:inputType="text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Address" />
+                            android:hint="@string/address_profile" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,7 +155,7 @@
                                     android:layout_height="wrap_content"
                                     android:lines="1"
                                     android:text="@={model.city}"
-                                    android:hint="City*" />
+                                    android:hint="@string/city" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,7 +170,7 @@
                                     android:layout_width="200dp"
                                     android:layout_height="wrap_content"
                                     android:lines="1"
-                                    android:hint="Zip code*"
+                                    android:hint="@string/zip_code"
                                     android:text="@={model.zipcode}"
                                     android:inputType="number" />
 
@@ -196,7 +196,7 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/btn_rounded_kamira_major"
-                        android:text="Save"
+                        android:text="@string/save"
                         android:textColor="@android:color/white" />
 
             </LinearLayout>

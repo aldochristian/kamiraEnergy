@@ -7,12 +7,12 @@
     <item
             android:id="@+id/orderFragment"
             android:icon="@drawable/ic_assignment_white_24dp"
-            android:title="Order" />
+            android:title="@string/order" />
 
     <item
             android:id="@+id/messageFragment"
             android:icon="@drawable/ic_mail_outline_white_24dp"
-            android:title="Message" />
+            android:title="@string/message" />
 
     <item
             android:id="@+id/profileFragment"

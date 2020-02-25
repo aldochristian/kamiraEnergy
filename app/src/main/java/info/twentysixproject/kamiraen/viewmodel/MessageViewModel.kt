@@ -1,22 +1,42 @@
 package info.twentysixproject.kamiraen.viewmodel
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import info.twentysixproject.kamiraen.database.InboxRepository
+import info.twentysixproject.kamiraen.database.InboxRoomDatabase
 import info.twentysixproject.kamiraen.dataclass.Inbox
 import info.twentysixproject.kamiraen.utils.Utils
+import kotlinx.coroutines.launch
 
-class MessageViewModel : ViewModel(){
+class MessageViewModel (application: Application) : AndroidViewModel(application){
 
     val db = FirebaseFirestore.getInstance()
     val auth: FirebaseAuth = FirebaseAuth.getInstance()
     val user: FirebaseUser? = auth.currentUser
 
+    /**
+     * Testing function for room
+     */
     var messageList = MutableLiveData<List<Inbox>>()
+
+    private val repository: InboxRepository
+    val allMessages: LiveData<List<Inbox>>
+
+    init {
+        val inboxDao = InboxRoomDatabase.getDatabase(application, viewModelScope).inboxDao()
+        repository = InboxRepository(inboxDao)
+        allMessages = repository.allMessages
+    }
+
+    fun insert(inbox: Inbox) = viewModelScope.launch {
+        repository.insert(inbox)
+    }
+    /** END OF TESTING FUNCTION **/
 
     fun fetchFirestore(){
 

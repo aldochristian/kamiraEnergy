@@ -82,14 +82,6 @@
     <string name="fcm_message">FCM Message</string>
     <string name="title_activity_firebase_ui">FirebaseUIActivity</string>
 
-    <!-- Menu on Screen -->
-    <string name="pick_up_garbage">Garbage</string>
-    <string name="pick_up_oilwaste">Cooking Oil</string>
-    <string name="redeem">Redeem</string>
-    <!-- Menu on bottom -->
-    <string name="home">Home</string>
-    <string name="profile">Profile</string>
-
     <!-- Maps -->
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_maps_java">Map</string>
@@ -257,13 +249,44 @@
     <string name="collector_name">Pending on collector pool</string>
 
     <!-- About and versioning -->
-    <string name="version">Beta 0.5.2</string>
-    <string name="last_update">September 2019</string>
+    <string name="version">Beta 0.6.1</string>
+    <string name="last_update">November 2019</string>
     <string name="landing_page">https://www.kamira.energy</string>
     <string name="contact_email">email : info@kamira.energy</string>
     <string name="address">Address : Jl. Sam Ratulangi No. 458,\nHotel Gran Puri Lt. 3 \nCo-Working space : Sarang Inovasi \nManado - Sulawesi Utara</string>
     <string name="title_activity_reward">RewardActivity</string>
     <string name="title_activity_capturebottle">CapturebottleActivity</string>
+    <!-- Bottom menu-->
+    <string name="home">Awal</string>
+    <string name="order">Permintaan</string>
+    <string name="message">Pesan</string>
+    <string name="profile">Profil</string>
+    <!-- Menu on screen home -->
+    <string name="pick_up_garbage">Jemput</string>
+    <string name="capture_garbage">Ambil gambar</string>
+    <string name="redeem">Redeem</string>
+    <string name="dropbox">Titik ambil</string>
+    <!-- Menu on screen profile -->
+    <string name="personal_details">Data diri</string>
+    <string name="term_conditions">Syarat dan ketentuan</string>
+    <string name="privacy_policy">Aturan penggunan data</string>
+    <string name="help">Bantuan</string>
+    <string name="customer_service">Layanan pengguna</string>
+    <string name="logout">Keluar</string>
+    <string name="about_app">Tentang aplikasi</string>
+    <string name="rate_playstore">Rate Kamira</string>
+    <!-- Field on edit profile -->
+    <string name="name">Nama</string>
+    <string name="sex">Jenis kelamin</string>
+    <string name="male">Laki</string>
+    <string name="female">Perempuan</string>
+    <string name="address_profile">Alamat</string>
+    <string name="city">Kota</string>
+    <string name="zip_code">Kode pos</string>
+    <!-- General button -->
+    <string name="save">Simpan</string>
+
+
 
 
 </resources>

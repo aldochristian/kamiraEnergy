@@ -43,7 +43,11 @@
                 app:destination="@id/aboutFragment" />
     </fragment>
     <fragment android:id="@+id/orderFragment" android:name="info.twentysixproject.kamiraen.Main.Fragments.OrderFragment"
-              android:label="fragment_order" tools:layout="@layout/fragment_order"/>
+              android:label="fragment_order" tools:layout="@layout/fragment_order">
+        <action
+                android:id="@+id/action_orderFragment_to_messageDetailFragment"
+                app:destination="@id/messageDetailFragment" />
+    </fragment>
     <fragment
             android:id="@+id/messageFragment"
             android:name="info.twentysixproject.kamiraen.Main.Fragments.MessageFragment"
@@ -78,4 +82,14 @@
             android:name="info.twentysixproject.kamiraen.PointsHistoryFragment"
             android:label="fragment_points_history"
             tools:layout="@layout/fragment_points_history" />
+    <fragment
+            android:id="@+id/detailOrderFragment"
+            android:name="info.twentysixproject.kamiraen.Main.Fragments.DetailOrderFragment"
+            android:label="detail_order_fragment"
+            tools:layout="@layout/detail_order_fragment" />
+    <fragment
+            android:id="@+id/messageDetailFragment"
+            android:name="info.twentysixproject.kamiraen.Main.Fragments.MessageDetailFragment"
+            android:label="message_detail_fragment"
+            tools:layout="@layout/message_detail_fragment" />
 </navigation>

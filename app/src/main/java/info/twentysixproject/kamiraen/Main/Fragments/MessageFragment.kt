@@ -46,11 +46,16 @@ class MessageFragment : Fragment() {
         })
         binding.messageRv.adapter = adapter
 
-        viewModel.fetchFirestore()
-        viewModel.messageList.observe(viewLifecycleOwner, Observer {
+        //viewModel.fetchFirestore()
+        /*viewModel.messageList.observe(viewLifecycleOwner, Observer {
             it.let {
                 adapter.submitList(it)
             }
+        })*/
+
+        viewModel.allMessages.observe(viewLifecycleOwner, Observer { messages ->
+            // Update the cached copy of the words in the adapter.
+            messages?.let { adapter.submitList(it) }
         })
 
         binding.lifecycleOwner = this

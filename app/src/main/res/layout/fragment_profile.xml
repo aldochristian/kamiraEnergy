@@ -122,7 +122,7 @@
                                 android:layout_marginLeft="@dimen/spacing_large"
                                 android:layout_marginRight="@dimen/spacing_large"
                                 android:layout_weight="1"
-                                android:text="Personal Details"
+                                android:text="@string/personal_details"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/grey_80"
                                 app:fontFamily="sans-serif-medium" />
@@ -163,7 +163,7 @@
                                 android:layout_marginLeft="@dimen/spacing_large"
                                 android:layout_marginRight="@dimen/spacing_large"
                                 android:layout_weight="1"
-                                android:text="Terms and Conditions"
+                                android:text="@string/term_conditions"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/grey_300"
                                 app:fontFamily="sans-serif-medium" />
@@ -204,7 +204,7 @@
                                 android:layout_marginLeft="@dimen/spacing_large"
                                 android:layout_marginRight="@dimen/spacing_large"
                                 android:layout_weight="1"
-                                android:text="Privacy Policy"
+                                android:text="@string/privacy_policy"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/grey_80"
                                 app:fontFamily="sans-serif-medium" />
@@ -244,7 +244,7 @@
                                 android:layout_marginLeft="@dimen/spacing_large"
                                 android:layout_marginRight="@dimen/spacing_large"
                                 android:layout_weight="1"
-                                android:text="Help"
+                                android:text="@string/help"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/grey_300"
                                 app:fontFamily="sans-serif-medium" />
@@ -284,7 +284,7 @@
                                 android:layout_marginLeft="@dimen/spacing_large"
                                 android:layout_marginRight="@dimen/spacing_large"
                                 android:layout_weight="1"
-                                android:text="Customer Services"
+                                android:text="@string/customer_service"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/grey_80"
                                 app:fontFamily="sans-serif-medium" />
@@ -350,7 +350,7 @@
                                 android:layout_marginLeft="@dimen/spacing_large"
                                 android:layout_marginRight="@dimen/spacing_large"
                                 android:layout_weight="1"
-                                android:text="Logout"
+                                android:text="@string/help"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/grey_80"
                                 app:fontFamily="sans-serif-medium" />
@@ -391,7 +391,7 @@
                                 android:layout_marginLeft="@dimen/spacing_large"
                                 android:layout_marginRight="@dimen/spacing_large"
                                 android:layout_weight="1"
-                                android:text="About App"
+                                android:text="@string/about_app"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/grey_80"
                                 app:fontFamily="sans-serif-medium" />

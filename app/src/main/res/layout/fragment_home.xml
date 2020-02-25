@@ -105,7 +105,7 @@
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Capture"
+                                android:text="@string/capture_garbage"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                                 android:textColor="@android:color/white"
                                 app:fontFamily="sans-serif-medium" />
@@ -155,7 +155,7 @@
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Dropbox"
+                                android:text="@string/dropbox"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                                 android:textColor="@color/grey_20"
                                 app:fontFamily="sans-serif-medium" />
@@ -269,7 +269,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"
                                         android:layout_marginTop="8dp"
-                                        android:text="Contribution"
+                                        android:text="Kontribusi"
                                         android:textSize="10dp" />
 
                                 <TextView
@@ -328,7 +328,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"
                                         android:layout_marginTop="8dp"
-                                        android:text="Points"
+                                        android:text="Poin"
                                         android:textSize="10dp" />
 
                                 <TextView
